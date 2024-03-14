@@ -3,6 +3,7 @@ import "./home.css"; // Import the CSS file
 import undraw_developer_activity_img from "../../assets/images/undraw_developer_activity.svg";
 import { TypeAnimation } from "react-type-animation";
 import { NavLink } from "react-router-dom"; // Import NavLink
+import { Card } from "../../components";
 
 // import hero_bg from "../../assets/images/hero_bg.png";
 
@@ -83,29 +84,12 @@ export default function Home() {
               </div>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <div className="card" style={{ height: "auto" }}>
-                <div className="card__cover">
-                  <img
-                    src="https://picsum.photos/290/150"
-                    alt="Eauction"
-                    style={{ maxWidth: "100%", height: "auto" }}
-                  />
-                </div>
-                <div className="card__content">
-                  <h4>
-                    <b>Nursery Plants</b>
-                  </h4>
-                  <p>
-                    Explore our selection of top-quality nursery plants,
-                    meticulously nurtured to perfection. Each tree planted
-                    represents a step towards enhancing your environment and
-                    increasing your property value.
-                  </p>
-                  <button className="cardBtn" type="button">
-                    Link here --&gt;
-                  </button>
-                </div>
-              </div>
+              <Card
+                image="https://example.com/image.jpg"
+                title="Example Card"
+                description="This is an example card description."
+                link="https://example.com"
+              />
             </Grid>{" "}
             <Grid item xs={12} sm={6} md={3}>
               <div className="card" style={{ height: "auto" }}>
