@@ -2,6 +2,8 @@ import { Container, Typography, Grid } from "@mui/material"; // Import Grid from
 import "./home.css"; // Import the CSS file
 import undraw_developer_activity_img from "../../assets/images/undraw_developer_activity.svg";
 import { TypeAnimation } from "react-type-animation";
+import { NavLink } from "react-router-dom"; // Import NavLink
+
 // import hero_bg from "../../assets/images/hero_bg.png";
 
 export default function Home() {
@@ -30,9 +32,12 @@ export default function Home() {
             contribute to your financial well-being.
           </h1>
           <div className="soclinks">
-            <button className="btn" type="button">
-              Contact Me!
-            </button>
+            {/* Use NavLink to navigate to the contact page */}
+            <NavLink to="/BORREST-SOLUTION-PVT-LTD/contacts">
+              <button className="btn" type="button">
+                Contact Me!
+              </button>
+            </NavLink>
           </div>
         </article>
         <div className="right-hero">
