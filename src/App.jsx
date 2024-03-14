@@ -15,9 +15,13 @@ export default function App() {
           <Footer />
         </Box>
         <FloatingWhatsApp
-          phoneNumber="+919637728916"
+          phoneNumber="9637728916"
           accountName="Rahul Gaydhane"
           avatar="https://avatars.githubusercontent.com/u/88554827?s=400&u=e8d177ad96a42307280f0eb37060fce672bf6a51&v=4"
+          allowEsc="true"
+          allowClickAway="true"
+          notification="true"
+          notificationSound="true"
         />
       </Container>
     </div>
