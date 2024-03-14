@@ -22,6 +22,7 @@ export default function App() {
           allowClickAway="true"
           notification="true"
           notificationSound="true"
+          notificationDelay="7"
         />
       </Container>
     </div>
