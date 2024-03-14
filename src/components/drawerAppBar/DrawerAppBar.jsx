@@ -14,13 +14,18 @@ import {
   Toolbar,
   Typography,
   Button,
-  Avatar,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Logo from "../../assets/images/logo.png";
+import { Link } from "react-router-dom"; // Import Link component
 
 const drawerWidth = 240; // Specify the drawer width here
 const navItems = ["Home", "About", "Contact"];
+const navLinks = [
+  "/BORREST-SOLUTION-PVT-LTD/",
+  "/BORREST-SOLUTION-PVT-LTD/about",
+  "/BORREST-SOLUTION-PVT-LTD/contacts",
+]; // Paths for navigation
 
 function DrawerAppBar(props) {
   const { window } = props;
@@ -38,9 +43,13 @@ function DrawerAppBar(props) {
       <img src={Logo} alt={"logo"} loading="logo" width="70px" />
       <Divider />
       <List>
-        {navItems.map((item) => (
+        {navItems.map((item, index) => (
           <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
+            <ListItemButton
+              component={Link}
+              to={navLinks[index]}
+              sx={{ textAlign: "center" }}
+            >
               <ListItemText primary={item} />
             </ListItemButton>
           </ListItem>
@@ -105,8 +114,13 @@ function DrawerAppBar(props) {
               },
             }}
           >
-            {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#000", marginLeft: 2 }}>
+            {navItems.map((item, index) => (
+              <Button
+                key={item}
+                component={Link}
+                to={navLinks[index]}
+                sx={{ color: "#000", marginLeft: 2 }}
+              >
                 {item}
               </Button>
             ))}

@@ -1,9 +1,8 @@
-import React from "react";
-import { Container, Typography, Button, Grid } from "@mui/material"; // Import Grid from MUI
+import { Container, Typography, Grid } from "@mui/material"; // Import Grid from MUI
 import "./home.css"; // Import the CSS file
 import undraw_developer_activity_img from "../../assets/images/undraw_developer_activity.svg";
 import { TypeAnimation } from "react-type-animation";
-import hero_bg from "../../assets/images/hero_bg.png";
+// import hero_bg from "../../assets/images/hero_bg.png";
 
 export default function Home() {
   return (
@@ -210,7 +209,7 @@ export default function Home() {
                     style={{ maxWidth: "100%", height: "auto" }}
                   />
                 </div>
-                <div className="card__content" >
+                <div className="card__content">
                   <h4>
                     <b>Miscellaneous Activities</b>
                   </h4>

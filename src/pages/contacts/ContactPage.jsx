@@ -26,7 +26,7 @@ const ContactPage = () => {
   };
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" sx={{ marginTop: 11 }}>
       <Typography variant="h4" align="center" gutterBottom>
         Contact Us
       </Typography>
