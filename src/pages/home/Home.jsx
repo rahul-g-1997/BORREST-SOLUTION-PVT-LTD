@@ -1,11 +1,11 @@
-import { Container, Typography, Grid } from "@mui/material"; // Import Grid from MUI
-import "./home.css"; // Import the CSS file
+import { Container, Typography, Grid } from "@mui/material";
+import "./home.css";
 import undraw_developer_activity_img from "../../assets/images/undraw_developer_activity.svg";
 import { TypeAnimation } from "react-type-animation";
-import { NavLink } from "react-router-dom"; // Import NavLink
-import { Card } from "../../components";
+import { NavLink } from "react-router-dom";
+import { ResponsiveCard } from "../../components";
 
-// import hero_bg from "../../assets/images/hero_bg.png";
+import cardsData from "../../data/cardsData";
 
 export default function Home() {
   return (
@@ -15,7 +15,6 @@ export default function Home() {
           <TypeAnimation
             className="txt"
             sequence={[
-              // Same substring at the start will only be typed out once, initially
               " Welcome to Borrest Solution Pvt. Ltd. ",
               1000,
               " Where Trees Mean Prosperity. ",
@@ -33,7 +32,6 @@ export default function Home() {
             contribute to your financial well-being.
           </h1>
           <div className="soclinks">
-            {/* Use NavLink to navigate to the contact page */}
             <NavLink to="/BORREST-SOLUTION-PVT-LTD/contacts">
               <button className="btn" type="button">
                 Contact Me!
@@ -56,165 +54,17 @@ export default function Home() {
             Our Services
           </Typography>
           <Grid container spacing={3}>
-            {" "}
-            {/* Use Grid container */}
-            {/* Each card is a Grid item */}
-            <Grid item xs={12} sm={6} md={3}>
-              <div className="card" style={{ height: "auto" }}>
-                <div className="card__cover">
-                  <img
-                    src="https://picsum.photos/290/150"
-                    alt="Eauction"
-                    style={{ maxWidth: "100%", height: "auto" }}
-                  />
-                </div>
-                <div className="card__content">
-                  <h4>
-                    <b>Eauction</b>
-                  </h4>
-                  <p>
-                    Join our online auctions to acquire premium nursery plants
-                    and gardening essentials. Every plant you purchase is an
-                    investment in a greener, more prosperous future.
-                  </p>
-                  <button className="cardBtn" type="button">
-                    Link here --&gt;
-                  </button>
-                </div>
-              </div>
-            </Grid>
-            <Grid item xs={12} sm={6} md={3}>
-              <Card
-                image="https://example.com/image.jpg"
-                title="Example Card"
-                description="This is an example card description."
-                link="https://example.com"
-              />
-            </Grid>{" "}
-            <Grid item xs={12} sm={6} md={3}>
-              <div className="card" style={{ height: "auto" }}>
-                <div className="card__cover">
-                  <img
-                    src="https://picsum.photos/290/150"
-                    alt="Eauction"
-                    style={{ maxWidth: "100%", height: "auto" }}
-                  />
-                </div>
-                <div className="card__content">
-                  <h4>
-                    <b>Planting</b>
-                  </h4>
-                  <p>
-                    Let us handle the planting process with expertise and care.
-                    Every tree we plant is an investment in the future,
-                    providing shade, beauty, and potential financial returns as
-                    it grows.
-                  </p>
-                  <button className="cardBtn" type="button">
-                    Link here --&gt;
-                  </button>
-                </div>
-              </div>
-            </Grid>{" "}
-            <Grid item xs={12} sm={6} md={3}>
-              <div className="card" style={{ height: "auto" }}>
-                <div className="card__cover">
-                  <img
-                    src="https://picsum.photos/290/150"
-                    alt="Eauction"
-                    style={{ maxWidth: "100%", height: "auto" }}
-                  />
-                </div>
-                <div className="card__content">
-                  <h4>
-                    <b>Monitoring Reports</b>
-                  </h4>
-                  <p>
-                    Stay updated on the growth and health of your trees with our
-                    comprehensive monitoring reports. Track your investment's
-                    progress and watch as your green assets flourish over time.
-                  </p>
-                  <button className="cardBtn" type="button">
-                    Link here --&gt;
-                  </button>
-                </div>
-              </div>
-            </Grid>{" "}
-            <Grid item xs={12} sm={6} md={3}>
-              <div className="card" style={{ height: "auto" }}>
-                <div className="card__cover">
-                  <img
-                    src="https://picsum.photos/290/150"
-                    alt="Eauction"
-                    style={{ maxWidth: "100%", height: "auto" }}
-                  />
-                </div>
-                <div className="card__content">
-                  <h4>
-                    <b>Felling</b>
-                  </h4>
-                  <p>
-                    When it's time to remove a tree, trust our professionals to
-                    do it safely and responsibly. We understand that each tree
-                    represents an investment, and we ensure that the process is
-                    handled with care and efficiency.
-                  </p>
-                  <button className="cardBtn" type="button">
-                    Link here --&gt;
-                  </button>
-                </div>
-              </div>
-            </Grid>{" "}
-            <Grid item xs={12} sm={6} md={3}>
-              <div className="card" style={{ height: "auto" }}>
-                <div className="card__cover">
-                  <img
-                    src="https://picsum.photos/290/150"
-                    alt="Eauction"
-                    style={{ maxWidth: "100%", height: "auto" }}
-                  />
-                </div>
-                <div className="card__content">
-                  <h4>
-                    <b>Fencing Solutions</b>
-                  </h4>
-                  <p>
-                    Secure your investment with our custom fencing solutions.
-                    Our durable fences not only protect your property but also
-                    enhance its value and appeal.
-                  </p>
-                  <button className="cardBtn" type="button">
-                    Link here --&gt;
-                  </button>
-                </div>
-              </div>
-            </Grid>{" "}
-            <Grid item xs={12} sm={6} md={3}>
-              <div className="card">
-                <div className="card__cover">
-                  <img
-                    src="https://picsum.photos/290/150"
-                    alt="Eauction"
-                    style={{ maxWidth: "100%", height: "auto" }}
-                  />
-                </div>
-                <div className="card__content">
-                  <h4>
-                    <b>Miscellaneous Activities</b>
-                  </h4>
-                  <p>
-                    From soil preparation to irrigation system installation, we
-                    offer a range of services to support your tree-growing
-                    endeavors. Let us help you maximize your investment and reap
-                    the rewards for years to come.
-                  </p>
-                  <button className="cardBtn" type="button">
-                    Link here --&gt;
-                  </button>
-                </div>
-              </div>
-            </Grid>
-            {/* Repeat similar Grid items for other cards */}
+            {cardsData.map((card, index) => (
+              <Grid item xs={12} sm={6} md={3} key={index}>
+                {/* Render a Card component for each item in the cardsData array */}
+                <ResponsiveCard
+                  title={card.title}
+                  description={card.description}
+                  link={card.link}
+                  image={card.image}
+                />
+              </Grid>
+            ))}
           </Grid>
         </Container>
       </section>

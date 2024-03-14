@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Card,
   CardActionArea,
@@ -8,9 +7,18 @@ import {
   Button,
 } from "@mui/material";
 
+// eslint-disable-next-line react/prop-types
 const ResponsiveCard = ({ image, title, description, link }) => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card
+      sx={{
+        maxWidth: 345,
+        transition: "transform 0.3s",
+        "&:hover": {
+          transform: "scale(1.05)",
+        },
+      }}
+    >
       <CardActionArea>
         <CardMedia component="img" height="140" image={image} alt={title} />
         <CardContent>
