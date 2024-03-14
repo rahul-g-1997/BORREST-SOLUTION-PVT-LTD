@@ -9,7 +9,7 @@ import cardsData from "../../data/cardsData";
 
 export default function Home() {
   return (
-    <main>
+    <main style={{ marginTop: 11 }}>
       <section className="hero" id="hero__section">
         <article className="left-hero">
           <TypeAnimation

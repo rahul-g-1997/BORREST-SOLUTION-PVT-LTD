@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import { TextField, Button, Typography, Container } from "@mui/material";
+import { useState } from "react";
+import { TextField, Button, Typography, Container, Box } from "@mui/material";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    contactNumber: "",
     message: "",
   });
 
@@ -21,6 +22,7 @@ const ContactPage = () => {
     setFormData({
       name: "",
       email: "",
+      contactNumber: "",
       message: "",
     });
   };
@@ -30,12 +32,20 @@ const ContactPage = () => {
       <Typography variant="h4" align="center" gutterBottom>
         Contact Us
       </Typography>
-      <form onSubmit={handleSubmit} style={{ marginTop: "2rem" }}>
+      <Box
+        component="form"
+        onSubmit={handleSubmit}
+        sx={{
+          marginTop: "2rem",
+          display: "flex",
+          flexDirection: "column",
+          gap: "1rem",
+        }}
+      >
         <TextField
           label="Name"
           variant="outlined"
           fullWidth
-          style={{ marginBottom: "1rem" }}
           name="name"
           value={formData.name}
           onChange={handleChange}
@@ -44,9 +54,16 @@ const ContactPage = () => {
           label="Email"
           variant="outlined"
           fullWidth
-          style={{ marginBottom: "1rem" }}
           name="email"
           value={formData.email}
+          onChange={handleChange}
+        />
+        <TextField
+          label="Contact Number"
+          variant="outlined"
+          fullWidth
+          name="contactNumber"
+          value={formData.contactNumber}
           onChange={handleChange}
         />
         <TextField
@@ -55,21 +72,14 @@ const ContactPage = () => {
           fullWidth
           multiline
           rows={4}
-          style={{ marginBottom: "1rem" }}
           name="message"
           value={formData.message}
           onChange={handleChange}
         />
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          fullWidth
-          style={{ marginBottom: "1rem" }}
-        >
+        <Button type="submit" variant="contained" color="primary" fullWidth>
           Submit
         </Button>
-      </form>
+      </Box>
     </Container>
   );
 };

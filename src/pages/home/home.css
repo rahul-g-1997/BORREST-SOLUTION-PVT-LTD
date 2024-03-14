@@ -24,13 +24,13 @@ body {
 
 
 section {
-    min-height: 100vh;
+    min-height: 90vh;
 }
 
 /* Setting the background of the hero section to a gradient. */
 .hero {
     display: grid;
-background: linear-gradient(to bottom, rgba(4, 111, 59, .2), rgba(4, 111, 59, .2)),
+    background: linear-gradient(to bottom, rgba(4, 111, 59, .2), rgba(4, 111, 59, .2)),
         linear-gradient(180deg, rgba(4, 111, 59, .2) 0, rgba(45, 143, 234, 0) 100%),
         radial-gradient(circle at 30% 0, rgba(4, 111, 59, .25) 0, rgba(250, 247, 254, 0) 100%);
 
@@ -456,4 +456,24 @@ figcaption {
     transform: rotate(-45deg) scaleX(0.7);
     top: 13PX;
     left: 7px;
+}
+
+/* img up down */
+@keyframes moveUpDown {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+#hero__img {
+    animation: moveUpDown 2s infinite;
+    /* Adjust the animation duration as needed */
 }

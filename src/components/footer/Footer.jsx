@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Container,
   Grid,
@@ -29,7 +28,6 @@ const Footer = () => {
                 Address
               </Typography>
               <Link
-                href="#"
                 style={{
                   marginBottom: "4px",
                   color: "#fff",
@@ -37,10 +35,9 @@ const Footer = () => {
                 }}
               >
                 <LocationOnIcon style={{ marginRight: "8px" }} />
-                Location
+                Kurukshetra
               </Link>
               <Link
-                href="#"
                 style={{
                   marginBottom: "4px",
                   color: "#fff",
@@ -48,10 +45,9 @@ const Footer = () => {
                 }}
               >
                 <PhoneIcon style={{ marginRight: "8px" }} />
-                Call +01 1234567890
+                Call +91-9896810237
               </Link>
               <Link
-                href="#"
                 style={{
                   marginBottom: "4px",
                   color: "#fff",
@@ -86,9 +82,9 @@ const Footer = () => {
                 Info
               </Typography>
               <Typography>
-                Necessary, making this the first true generator on the Internet.
-                It uses a dictionary of over 200 Latin words, combined with a
-                handful.
+                Service Basis. we provides services related to forestry issues
+                like planting,felling of trees,nursery plants project report
+                preparation etc
               </Typography>
             </div>
           </Grid>
