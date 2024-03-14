@@ -30,29 +30,28 @@ section {
 /* Setting the background of the hero section to a gradient. */
 .hero {
     display: grid;
-    background: linear-gradient(to bottom, rgba(4, 111, 59, .2), rgba(4, 111, 59, .2)),
-        linear-gradient(180deg, rgba(4, 111, 59, .2) 0, rgba(45, 143, 234, 0) 100%),
-        radial-gradient(circle at 30% 0, rgba(4, 111, 59, .25) 0, rgba(250, 247, 254, 0) 100%);
-
+    background:
+        url('../../assets/images/wave.svg') center/cover;
+    /* Replace 'path_to_wave_collection_image.svg' with the path to your SVG image */
 
     grid-template-columns: repeat(2, 1fr);
-    place-items: center;
     gap: 3rem;
     text-align: center;
 }
 
 .left-hero {
-    width: 50vw;
-    padding-left: 7rem;
+    width: 35vw;
+    padding-left: 1rem;
     display: flex;
     flex-direction: column;
+    padding-top: 7rem;
 }
 
 .txt {
-    font-size: 3.5rem;
+    font-size: 1.5rem !important;
     font-family: 'Carter One', sans-serif;
     font-weight: bold;
-    color: #046f3b;
+    color: #ffffff;
 }
 
 .txt__upper {
@@ -67,8 +66,8 @@ section {
 }
 
 .desc {
-    padding: .5rem;
-    color: rgb(119, 119, 119);
+    padding: 1rem;
+    color: rgb(255, 255, 255);
 }
 
 .btn {
@@ -103,7 +102,7 @@ section {
 .right-hero {
     width: auto;
     display: grid;
-    place-items: center;
+    margin-top: 7rem;
 }
 
 .right-hero img {

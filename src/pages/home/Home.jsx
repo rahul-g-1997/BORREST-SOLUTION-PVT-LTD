@@ -9,7 +9,7 @@ import cardsData from "../../data/cardsData";
 
 export default function Home() {
   return (
-    <main style={{ marginTop: 11 }}>
+    <main>
       <section className="hero" id="hero__section">
         <article className="left-hero">
           <TypeAnimation
@@ -27,9 +27,9 @@ export default function Home() {
           />
           <h1 className="desc">
             At Borrest Solution Pvt Ltd, we believe in the transformative power
-            of trees. With our "Grow Trees Grow Money" philosophy, we offer a
-            range of services that not only beautify your surroundings but also
-            contribute to your financial well-being.
+            of trees. With our &quot;Grow Trees Grow Money&quot; philosophy, we
+            offer a range of services that not only beautify your surroundings
+            but also contribute to your financial well-being.
           </h1>
           <div className="soclinks">
             <NavLink to="/BORREST-SOLUTION-PVT-LTD/contacts">

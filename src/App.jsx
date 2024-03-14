@@ -1,6 +1,7 @@
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import { Outlet } from "react-router-dom";
+import { FloatingWhatsApp } from "react-floating-whatsapp";
 
 import { DrawerAppBar, Footer } from "./components";
 
@@ -13,6 +14,11 @@ export default function App() {
           <Outlet />
           <Footer />
         </Box>
+        <FloatingWhatsApp
+          phoneNumber="+919637728916"
+          accountName="Rahul Gaydhane"
+          avatar="https://avatars.githubusercontent.com/u/88554827?s=400&u=e8d177ad96a42307280f0eb37060fce672bf6a51&v=4"
+        />
       </Container>
     </div>
   );

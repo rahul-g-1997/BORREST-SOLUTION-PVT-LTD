@@ -17,7 +17,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Logo from "../../assets/images/logo.png";
-import { Link } from "react-router-dom"; // Import Link component
+import { NavLink } from "react-router-dom"; // Import NavLink component
 
 const drawerWidth = 240; // Specify the drawer width here
 const navItems = ["Home", "About", "Contact"];
@@ -29,6 +29,7 @@ const navLinks = [
 
 function DrawerAppBar(props) {
   const { window } = props;
+
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -46,8 +47,9 @@ function DrawerAppBar(props) {
         {navItems.map((item, index) => (
           <ListItem key={item} disablePadding>
             <ListItemButton
-              component={Link}
+              component={NavLink} // Use NavLink instead of Link
               to={navLinks[index]}
+              activeClassName="active" // Specify the activeClassName
               sx={{ textAlign: "center" }}
             >
               <ListItemText primary={item} />
@@ -93,11 +95,12 @@ function DrawerAppBar(props) {
               variant="h6"
               noWrap
               sx={{
-                color: "#000",
+                color: "#046f3b",
                 fontSize: {
                   xs: "1rem", // Define font size for extra small screens (mobile)
                   sm: "inherit", // Inherit font size for small screens and above
                 },
+                fontFamily: "Carter One, sans-serif",
               }}
             >
               BORREST SOLUTION PVT LTD
@@ -117,9 +120,14 @@ function DrawerAppBar(props) {
             {navItems.map((item, index) => (
               <Button
                 key={item}
-                component={Link}
+                component={NavLink} // Use NavLink instead of Link
                 to={navLinks[index]}
-                sx={{ color: "#000", marginLeft: 2 }}
+                activeClassName="active" // Specify the activeClassName
+                sx={{
+                  color: "#046f3b",
+                  marginLeft: 2,
+                  fontFamily: "Carter One, sans-serif",
+                }}
               >
                 {item}
               </Button>
