@@ -38,7 +38,7 @@ const ResponsiveCard = ({ image, title, description, link }) => {
           variant="contained"
           color="primary"
         >
-          Learn More
+          Visit
         </Button>
       </CardContent>
     </Card>

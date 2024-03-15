@@ -76,16 +76,16 @@ section {
     border-width: 1px;
     border-style: solid;
     border-radius: 5px;
-    border-color: #046f3b;
+    border-color: #ffffff;
     padding: 1rem;
-    color: #222;
+    color: #ffffff;
     margin-top: .5rem;
     box-shadow: 4px 4px 0px #046f3b;
 }
 
 .btn:hover {
     /*transform: scale(1.1);*/
-    color: rgb(239, 248, 252);
+    color: rgb(0, 0, 0);
     background-color: #046f3b;
     box-shadow: unset;
     border: unset;

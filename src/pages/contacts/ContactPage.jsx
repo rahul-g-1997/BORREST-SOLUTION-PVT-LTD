@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { TextField, Button, Typography, Container, Box } from "@mui/material";
+import emailjs from "@emailjs/browser"; // Import emailjs library
 
 const ContactPage = () => {
+  const form = useRef(); // Create a ref for the form
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -16,25 +19,40 @@ const ContactPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // You can implement your logic to handle form submission here
-    console.log(formData);
-    // Reset form after submission
-    setFormData({
-      name: "",
-      email: "",
-      contactNumber: "",
-      message: "",
-    });
+
+    emailjs
+      .sendForm(
+        "service_u6rxflc",
+        "template_34w96ao",
+        form.current,
+        "AojJRsvCrxiKFHOFE"
+      )
+      .then(
+        (result) => {
+          console.log("Email sent successfully:", result.text);
+          // Reset form after submission
+          setFormData({
+            name: "",
+            email: "",
+            contactNumber: "",
+            message: "",
+          });
+        },
+        (error) => {
+          console.error("Email sending failed:", error.text);
+        }
+      );
   };
 
   return (
-    <Container maxWidth="sm" sx={{ marginTop: 11 }}>
+    <Container maxWidth="sm" sx={{ marginTop: 11, marginBottom: 5 }}>
       <Typography variant="h4" align="center" gutterBottom>
         Contact Us
       </Typography>
       <Box
         component="form"
         onSubmit={handleSubmit}
+        ref={form} // Set ref to the form
         sx={{
           marginTop: "2rem",
           display: "flex",
@@ -49,22 +67,27 @@ const ContactPage = () => {
           name="name"
           value={formData.name}
           onChange={handleChange}
+          required // Add required attribute
         />
         <TextField
           label="Email"
           variant="outlined"
           fullWidth
           name="email"
+          type="email"
           value={formData.email}
           onChange={handleChange}
+          required // Add required attribute
         />
         <TextField
           label="Contact Number"
           variant="outlined"
           fullWidth
           name="contactNumber"
+          type="tel"
           value={formData.contactNumber}
           onChange={handleChange}
+          required // Add required attribute
         />
         <TextField
           label="Message"
@@ -75,6 +98,7 @@ const ContactPage = () => {
           name="message"
           value={formData.message}
           onChange={handleChange}
+          required // Add required attribute
         />
         <Button type="submit" variant="contained" color="primary" fullWidth>
           Submit
