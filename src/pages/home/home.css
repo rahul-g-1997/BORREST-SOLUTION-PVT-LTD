@@ -108,6 +108,7 @@ section {
 
 .right-hero img {
     border-radius: 50%;
+    width: 77%;
 }
 
 .projects {
@@ -282,7 +283,11 @@ figcaption {
         padding-left: 50vh;
     }
 
-   
+    .right-hero img {
+        width: 100%;
+        margin: 0;
+    }
+
 }
 
 @media only screen and (max-width:1025px) {
@@ -297,12 +302,7 @@ figcaption {
         padding-bottom: 1rem;
     }
 
-    #hero__img {
-        margin-top: 4rem;
-        margin-right: 8rem;
-        width: 250px;
-        height: 250px;
-    }
+    
 
     .fig {
         margin: 0 9.2rem;
@@ -338,8 +338,7 @@ figcaption {
     }
 
     #hero__img {
-        margin-bottom: 4rem;
-        margin-right: unset;
+        margin-bottom: 2rem;
     }
 }
 
@@ -366,6 +365,8 @@ figcaption {
 
     .left-hero {
         padding: 0rem;
+        padding-bottom: 0;
+            margin-bottom: 0;
     }
 
     #hero__img {
@@ -387,12 +388,11 @@ figcaption {
 
     .left-hero {
         padding: 2rem;
+        padding-bottom: 0;
+        margin-bottom: 0;
     }
 
-    #hero__img {
-        width: 260px;
-        height: 260px;
-    }
+  
 
     .fig {
         margin: 0 1.5rem;
@@ -402,8 +402,8 @@ figcaption {
 @media only screen and (max-width:376px) {
 
     #hero__img {
-        width: 250px;
-        height: 250px;
+        width: 300px;
+        height: 300px;
     }
 
     .fig {

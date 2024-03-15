@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import { Outlet } from "react-router-dom";
 import { FloatingWhatsApp } from "react-floating-whatsapp";
 
-import { DrawerAppBar, Footer } from "./components";
+import {  DrawerAppBar, Footer } from "./components";
 
 export default function App() {
   return (

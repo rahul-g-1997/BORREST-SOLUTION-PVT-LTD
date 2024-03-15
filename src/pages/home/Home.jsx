@@ -21,7 +21,14 @@ const images = [
   { url: img4 },
   { url: img5 },
 ];
-
+const calculateHeight = () => {
+  // Define your desired aspect ratio (e.g., 16:9)
+  const aspectRatio = 16 / 9;
+  // Get the viewport width
+  const viewportWidth = window.innerWidth;
+  // Calculate the height based on the aspect ratio and viewport width
+  return viewportWidth / aspectRatio;
+};
 export default function Home() {
   return (
     <main>
@@ -59,16 +66,15 @@ export default function Home() {
             id="hero__img"
             src={undraw_developer_activity_img}
             alt="right-hero"
-            width="77%"
           />
         </div>
       </section>
       <Grid container alignItems="center">
         <Grid item xs={12} sm={10} md={8} lg={6} xl={4}>
-          {/* Adjust the number of columns displayed at different breakpoints */}
+          {/* Adjust the height dynamically based on the viewport width */}
           <SimpleImageSlider
             width={"100%"}
-            height={777}
+            height={calculateHeight()} // Set the height dynamically
             images={images}
             showBullets={true}
             showNavs={true}
