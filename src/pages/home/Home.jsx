@@ -4,8 +4,22 @@ import undraw_developer_activity_img from "../../assets/images/undraw_developer_
 import { TypeAnimation } from "react-type-animation";
 import { NavLink } from "react-router-dom";
 import { ResponsiveCard } from "../../components";
+import SimpleImageSlider from "react-simple-image-slider";
 
 import cardsData from "../../data/cardsData";
+import img1 from "../../assets/images/img1.jpg";
+import img2 from "../../assets/images/img2.jpg";
+import img3 from "../../assets/images/img3.jpg";
+import img4 from "../../assets/images/img4.jpg";
+import img5 from "../../assets/images/img5.jpg";
+
+const images = [
+  { url: img1 },
+  { url: img2 },
+  { url: img3 },
+  { url: img4 },
+  { url: img5 },
+];
 
 export default function Home() {
   return (
@@ -48,7 +62,19 @@ export default function Home() {
           />
         </div>
       </section>
-      <section></section>
+      <Grid container alignItems="center">
+        <Grid item xs={12} sm={10} md={8} lg={6} xl={4}>
+          {/* Adjust the number of columns displayed at different breakpoints */}
+          <SimpleImageSlider
+            width={"100%"}
+            height={777}
+            images={images}
+            showBullets={true}
+            showNavs={true}
+          />
+        </Grid>
+      </Grid>
+
       <section className="projects" id="project__section">
         <Container>
           <Typography variant="h3" className="project-heading">

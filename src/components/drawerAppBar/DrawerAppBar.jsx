@@ -49,7 +49,6 @@ function DrawerAppBar(props) {
             <ListItemButton
               component={NavLink} // Use NavLink instead of Link
               to={navLinks[index]}
-              activeClassName="active" // Specify the activeClassName
               sx={{ textAlign: "center" }}
             >
               <ListItemText primary={item} />
@@ -122,7 +121,6 @@ function DrawerAppBar(props) {
                 key={item}
                 component={NavLink} // Use NavLink instead of Link
                 to={navLinks[index]}
-                activeClassName="active" // Specify the activeClassName
                 sx={{
                   color: "#046f3b",
                   marginLeft: 2,
