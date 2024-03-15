@@ -270,6 +270,18 @@ figcaption {
     .nav-menu.active {
         top: 4.313rem;
     }
+
+    .hero {
+        padding-top: 7vh;
+        background-color: #046f3b;
+    }
+
+
+    .right-hero {
+        padding-left: 50vh;
+    }
+
+   
 }
 
 @media only screen and (max-width:1025px) {
@@ -352,16 +364,21 @@ figcaption {
 @media only screen and (max-width:541px) {
 
     .left-hero {
-        padding: 3rem;
+        padding: 0rem;
     }
 
     #hero__img {
-        width: 270px;
-        height: 270px;
+        width: 470px;
+        height: 470px;
     }
 
     .fig {
         margin: 0 5rem;
+    }
+
+    .right-hero {
+        padding: 0;
+        padding-left: 10vh;
     }
 }
 

@@ -48,6 +48,7 @@ export default function Home() {
           />
         </div>
       </section>
+      <section></section>
       <section className="projects" id="project__section">
         <Container>
           <Typography variant="h3" className="project-heading">
