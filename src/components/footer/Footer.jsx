@@ -18,7 +18,12 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 const Footer = () => {
   return (
     <section
-      style={{ padding: "32px 0", backgroundColor: "#01723c", color: "#fff" }}
+      style={{
+        padding: "32px 0",
+        minHeight: "100px", // Adjusted minHeight instead of height
+        backgroundColor: "#01723c",
+        color: "#fff",
+      }}
     >
       <Container>
         <Grid container spacing={3}>

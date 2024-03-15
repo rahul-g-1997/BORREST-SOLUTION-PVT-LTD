@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import { ResponsiveCard } from "../../components";
 import SimpleImageSlider from "react-simple-image-slider";
 
+
 import cardsData from "../../data/cardsData";
 import img1 from "../../assets/images/img1.jpg";
 import img2 from "../../assets/images/img2.jpg";

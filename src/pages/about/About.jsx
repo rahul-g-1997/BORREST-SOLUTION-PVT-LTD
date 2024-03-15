@@ -2,15 +2,23 @@ import { Typography, Container, Grid } from "@mui/material";
 
 export default function About() {
   return (
-    <Container maxWidth="xl" sx={{ marginTop: 11 }}>
+    <Container maxWidth="md" sx={{ marginTop: 11 }}>
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <Typography variant="h4" align="center" gutterBottom>
+          <Typography
+            sx={{
+              color: "#046f3b",
+              fontFamily: "Carter One, sans-serif",
+            }}
+            variant="h4"
+            align="center"
+            gutterBottom
+          >
             About Borrest Solution Pvt Ltd
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="body1">
+          <Typography variant="body1" paragraph>
             At Borrest Solution Pvt Ltd, we are passionate about the
             transformative power of trees. Our mission is to not only beautify
             landscapes but also to help our clients grow their wealth through
@@ -18,7 +26,7 @@ export default function About() {
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="body1">
+          <Typography variant="body1" paragraph>
             With our &quot;Grow Trees Grow Money&quot; philosophy, we offer a
             range of services that cater to both the environmental and financial
             aspects of tree management. Whether you&apos;re looking to enhance
@@ -28,7 +36,7 @@ export default function About() {
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="body1">
+          <Typography variant="body1" paragraph>
             Our team of experienced professionals is committed to delivering
             excellence in every project we undertake. From selecting the right
             trees for your landscape to providing ongoing maintenance and care,
@@ -36,7 +44,7 @@ export default function About() {
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="body1">
+          <Typography variant="body1" paragraph>
             We understand the importance of sustainability and environmental
             responsibility. That&apos;s why we prioritize eco-friendly practices
             in all our operations, from sourcing materials to implementing green
@@ -44,7 +52,7 @@ export default function About() {
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="body1">
+          <Typography variant="body1" paragraph>
             Beyond our commitment to trees and the environment, we value
             community engagement and social responsibility. We actively support
             local initiatives aimed at tree conservation, urban greening, and
@@ -52,7 +60,7 @@ export default function About() {
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="body1">
+          <Typography variant="body1" paragraph>
             Join us in our mission to make the world a greener, more prosperous
             place. Together, we can grow trees and grow money for a sustainable
             future.

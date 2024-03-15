@@ -46,9 +46,21 @@ const ContactPage = () => {
 
   return (
     <Container maxWidth="sm" sx={{ marginTop: 11, marginBottom: 5 }}>
-      <Typography variant="h4" align="center" gutterBottom>
+      <Typography
+        sx={{
+          color: "#046f3b",
+          fontFamily: "Carter One, sans-serif",
+        }}
+        variant="h4"
+        align="center"
+        gutterBottom
+      >
         Contact Us
       </Typography>
+      <Box>
+        Reach out to us with any questions, feedback, or inquiries you may have.
+        Simply fill out the form below, and we&apos;ll be in touch shortly.
+      </Box>
       <Box
         component="form"
         onSubmit={handleSubmit}
@@ -100,7 +112,15 @@ const ContactPage = () => {
           onChange={handleChange}
           required // Add required attribute
         />
-        <Button type="submit" variant="contained" color="primary" fullWidth>
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          fullWidth
+          sx={{
+            backgroundColor: "#046f3b",
+          }}
+        >
           Submit
         </Button>
       </Box>
