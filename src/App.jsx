@@ -2,9 +2,8 @@ import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import { Outlet } from "react-router-dom";
 import { FloatingWhatsApp } from "react-floating-whatsapp";
-
-import {  DrawerAppBar, Footer } from "./components";
-
+import { DrawerAppBar, Footer } from "./components";
+import avatar from "./assets/images/WhatsApplogo.jpeg";
 export default function App() {
   return (
     <div>
@@ -15,9 +14,9 @@ export default function App() {
           <Footer />
         </Box>
         <FloatingWhatsApp
-          phoneNumber="9637728916"
-          accountName="Rahul Gaydhane"
-          avatar="https://avatars.githubusercontent.com/u/88554827?s=400&u=e8d177ad96a42307280f0eb37060fce672bf6a51&v=4"
+          phoneNumber="+919896810237"
+          accountName="Mr. Vinod Bhatia, IFS"
+          avatar={avatar}
           allowEsc="true"
           allowClickAway="true"
           notification="true"

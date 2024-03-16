@@ -22,10 +22,10 @@ const ContactPage = () => {
 
     emailjs
       .sendForm(
-        "service_u6rxflc",
-        "template_34w96ao",
+        "service_l9krszx",
+        "template_e73ritz",
         form.current,
-        "AojJRsvCrxiKFHOFE"
+        "cVZZd4pbPF11Q9kC7"
       )
       .then(
         (result) => {
