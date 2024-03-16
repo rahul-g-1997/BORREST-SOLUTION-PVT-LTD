@@ -61,7 +61,7 @@ const Footer = () => {
                 }}
               >
                 <EmailIcon style={{ marginRight: "8px" }} />
-                demo@gmail.com
+                borrestsolutions@gmail.com
               </Link>
             </div>
             <div>
@@ -173,7 +173,7 @@ const Footer = () => {
           </Grid>
         </Grid>
       </Container>
-      <Copyright/>
+      <Copyright />
     </section>
   );
 };
