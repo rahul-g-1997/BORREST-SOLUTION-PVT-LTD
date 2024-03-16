@@ -147,6 +147,8 @@ function DrawerAppBar(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth, // Apply the specified width to the drawer
+              color: "#046f3b",
+              fontFamily: "Carter One, sans-serif",
             },
           }}
         >
