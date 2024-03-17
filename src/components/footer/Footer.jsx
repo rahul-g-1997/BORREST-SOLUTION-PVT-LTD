@@ -2,10 +2,11 @@ import {
   Container,
   Grid,
   Typography,
-  TextField,
-  Button,
-  Link,
   IconButton,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
 } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PhoneIcon from "@mui/icons-material/Phone";
@@ -27,45 +28,35 @@ const Footer = () => {
       }}
     >
       <Container>
-        <Grid container spacing={3}>
-          <Grid item md={6} lg={3} style={{ marginBottom: "24px" }}>
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <Typography variant="h6" style={{ marginBottom: "8px" }}>
-                Address
+        <Grid container spacing={7}>
+          <Grid item md={6} lg={4} style={{ marginBottom: "24px" }}>
+            <div>
+              <Typography variant="h6" gutterBottom>
+                Contact Us
               </Typography>
-              <Link
-                style={{
-                  marginBottom: "4px",
-                  color: "#fff",
-                  textDecoration: "none",
-                }}
-              >
-                <LocationOnIcon style={{ marginRight: "8px" }} />
-                Kurukshetra
-              </Link>
-              <Link
-                style={{
-                  marginBottom: "4px",
-                  color: "#fff",
-                  textDecoration: "none",
-                }}
-              >
-                <PhoneIcon style={{ marginRight: "8px" }} />
-                Call +91-9896810237
-              </Link>
-              <Link
-                style={{
-                  marginBottom: "4px",
-                  color: "#fff",
-                  textDecoration: "none",
-                }}
-              >
-                <EmailIcon style={{ marginRight: "8px" }} />
-                borrestsolutions@gmail.com
-              </Link>
+              <List disablePadding>
+                <ListItem disableGutters>
+                  <ListItemIcon>
+                    <LocationOnIcon style={{ color: "#fff" }} />
+                  </ListItemIcon>
+                  <ListItemText primary="Kurukshetra" />
+                </ListItem>
+                <ListItem disableGutters>
+                  <ListItemIcon>
+                    <PhoneIcon style={{ color: "#fff" }} />
+                  </ListItemIcon>
+                  <ListItemText primary="+91-9896810237" />
+                </ListItem>
+                <ListItem disableGutters>
+                  <ListItemIcon>
+                    <EmailIcon style={{ color: "#fff" }} />
+                  </ListItemIcon>
+                  <ListItemText primary="borrestsolutions@gmail.com" />
+                </ListItem>
+              </List>
             </div>
             <div>
-              <Typography variant="h6" style={{ marginBottom: "8px" }}>
+              <Typography variant="h6" gutterBottom mt={2}>
                 Social
               </Typography>
               <IconButton href="#" style={{ color: "#fff" }}>
@@ -82,93 +73,76 @@ const Footer = () => {
               </IconButton>
             </div>
           </Grid>
-          <Grid item md={6} lg={3} style={{ marginBottom: "24px" }}>
+          <Grid item md={6} lg={4} style={{ marginBottom: "24px" }}>
             <div>
-              <Typography variant="h6" style={{ marginBottom: "8px" }}>
+              <Typography variant="h6" gutterBottom>
                 Info
               </Typography>
               <Typography>
-                Service Basis. we provides services related to forestry issues
-                like planting,felling of trees,nursery plants project report
-                preparation etc
+                Service Basis. we provide services related to forestry issues
+                like planting, felling of trees, nursery plants project report
+                preparation etc.
               </Typography>
             </div>
           </Grid>
-          <Grid item md={6} lg={2} style={{ marginBottom: "24px" }}>
+          <Grid item md={6} lg={4} style={{ marginBottom: "24px" }}>
             <div>
-              <Typography variant="h6" style={{ marginBottom: "8px" }}>
+              <Typography variant="h6" gutterBottom>
                 Links
               </Typography>
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <Link
-                  href="index.html"
-                  style={{
-                    marginBottom: "4px",
-                    color: "#fff",
-                    textDecoration: "none",
-                  }}
-                >
-                  Home
-                </Link>
-                <Link
-                  href="about.html"
-                  style={{
-                    marginBottom: "4px",
-                    color: "#fff",
-                    textDecoration: "none",
-                  }}
-                >
-                  About
-                </Link>
-                <Link
-                  href="service.html"
-                  style={{
-                    marginBottom: "4px",
-                    color: "#fff",
-                    textDecoration: "none",
-                  }}
-                >
-                  Services
-                </Link>
-                <Link
-                  href="why.html"
-                  style={{
-                    marginBottom: "4px",
-                    color: "#fff",
-                    textDecoration: "none",
-                  }}
-                >
-                  Why Us
-                </Link>
-                <Link
-                  href="team.html"
-                  style={{
-                    marginBottom: "4px",
-                    color: "#fff",
-                    textDecoration: "none",
-                  }}
-                >
-                  Team
-                </Link>
-              </div>
-            </div>
-          </Grid>
-          <Grid item md={6} lg={3} style={{ marginBottom: "24px" }}>
-            <div>
-              <Typography variant="h6" style={{ marginBottom: "8px" }}>
-                Subscribe
-              </Typography>
-              <form>
-                <TextField label="Enter email" variant="outlined" fullWidth />
-                <Button
-                  variant="contained"
-                  color="primary"
-                  type="submit"
-                  style={{ marginTop: "8px" }}
-                >
-                  Subscribe
-                </Button>
-              </form>
+              <List disablePadding>
+                <ListItem disableGutters>
+                  <ListItemText
+                    primary={
+                      <Typography
+                        component="a"
+                        href="index.html"
+                        style={{
+                          color: "#fff",
+                          textDecoration: "none",
+                          cursor: "pointer",
+                        }}
+                      >
+                        Home
+                      </Typography>
+                    }
+                  />
+                </ListItem>
+                <ListItem disableGutters>
+                  <ListItemText
+                    primary={
+                      <Typography
+                        component="a"
+                        href="about.html"
+                        style={{
+                          color: "#fff",
+                          textDecoration: "none",
+                          cursor: "pointer",
+                        }}
+                      >
+                        About
+                      </Typography>
+                    }
+                  />
+                </ListItem>
+                <ListItem disableGutters>
+                  <ListItemText
+                    primary={
+                      <Typography
+                        component="a"
+                        href="service.html"
+                        style={{
+                          color: "#fff",
+                          textDecoration: "none",
+                          cursor: "pointer",
+                        }}
+                      >
+                        Contact
+                      </Typography>
+                    }
+                  />
+                </ListItem>
+              </List>
             </div>
           </Grid>
         </Grid>

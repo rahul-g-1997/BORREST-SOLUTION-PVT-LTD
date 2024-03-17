@@ -3,7 +3,7 @@ import "./home.css";
 import undraw_developer_activity_img from "../../assets/images/undraw_developer_activity.svg";
 import { TypeAnimation } from "react-type-animation";
 import { NavLink } from "react-router-dom";
-import {  ResponsiveCard } from "../../components";
+import { ResponsiveCard } from "../../components";
 import SimpleImageSlider from "react-simple-image-slider";
 
 import cardsData from "../../data/cardsData";
@@ -69,7 +69,7 @@ export default function Home() {
           />
         </div>
       </section>
-      
+
       <section className="projects" id="project__section">
         <Container>
           <Typography
@@ -85,7 +85,6 @@ export default function Home() {
           >
             Our Services
           </Typography>
-          ;
           <Grid container spacing={3}>
             {cardsData.map((card, index) => (
               <Grid item xs={12} sm={6} md={3} key={index}>
