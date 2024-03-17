@@ -13,10 +13,6 @@ const ResponsiveCard = ({ image, title, description, link }) => {
     <Card
       sx={{
         maxWidth: 345,
-        transition: "transform 0.3s",
-        "&:hover": {
-          transform: "scale(1.05)",
-        },
       }}
     >
       <CardActionArea>
@@ -37,6 +33,12 @@ const ResponsiveCard = ({ image, title, description, link }) => {
           rel="noopener"
           variant="contained"
           color="primary"
+          sx={{
+            backgroundColor: "#038043",
+            "&:hover": {
+              backgroundColor: "#036639", // Change to the hover color you prefer
+            },
+          }}
         >
           Visit
         </Button>

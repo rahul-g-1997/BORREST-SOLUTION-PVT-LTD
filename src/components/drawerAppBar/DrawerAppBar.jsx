@@ -148,8 +148,8 @@ function DrawerAppBar(props) {
               boxSizing: "border-box",
               width: drawerWidth, // Apply the specified width to the drawer
               color: "#046f3b",
-              fontFamily: "Carter One, sans-serif",
             },
+            fontFamily: "Carter One, sans-serif",
           }}
         >
           {drawer}
