@@ -1,0 +1,40 @@
+.responsive-card {
+    overflow: hidden;
+    /* Hide overflow content */
+}
+
+.card-action-area {
+    position: relative;
+    /* Position relative for absolute positioning */
+}
+
+.card-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    /* Background color for details */
+    padding: 10px;
+    /* Padding for details */
+    opacity: 0;
+    /* Initially hide the details */
+    transition: opacity 0.3s;
+    /* Smooth transition for opacity */
+}
+
+.card-action-area:hover .card-content {
+    opacity: 1;
+    /* Show details on hover */
+}
+
+.card-image {
+    transition: opacity 0.3s;
+    /* Smooth transition for opacity */
+}
+
+.card-action-area:hover .card-image {
+    opacity: 0;
+    /* Hide image on hover */
+}
