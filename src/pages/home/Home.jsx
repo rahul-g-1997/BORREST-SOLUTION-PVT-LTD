@@ -4,31 +4,14 @@ import undraw_developer_activity_img from "../../assets/images/undraw_developer_
 import { TypeAnimation } from "react-type-animation";
 import { NavLink } from "react-router-dom";
 import { ResponsiveCard } from "../../components";
-import SimpleImageSlider from "react-simple-image-slider";
+
 
 import cardsData from "../../data/cardsData";
-import img1 from "../../assets/images/img1.jpg";
-import img2 from "../../assets/images/img2.jpg";
-import img3 from "../../assets/images/img3.jpg";
-import img4 from "../../assets/images/img4.jpg";
-import img5 from "../../assets/images/img5.jpg";
+
 import sample from "../../assets/video/bgvideo.mp4";
 
-const images = [
-  { url: img1 },
-  { url: img2 },
-  { url: img3 },
-  { url: img4 },
-  { url: img5 },
-];
-const calculateHeight = () => {
-  // Define your desired aspect ratio (e.g., 16:9)
-  const aspectRatio = 16 / 9;
-  // Get the viewport width
-  const viewportWidth = window.innerWidth;
-  // Calculate the height based on the aspect ratio and viewport width
-  return viewportWidth / aspectRatio;
-};
+
+
 export default function Home() {
   return (
     <main>
@@ -71,7 +54,7 @@ export default function Home() {
       </section>
 
       <section className="projects" id="project__section">
-        <Container>
+        <Container sx={{ mt: -7 }}>
           <Typography
             variant="h4"
             className="project-heading"
@@ -100,23 +83,15 @@ export default function Home() {
           </Grid>
         </Container>
       </section>
-      <div className="videoWrapper">
-        <video className="videoTag" autoPlay loop muted>
-          <source src={sample} type="video/mp4" />
-        </video>
-      </div>
-      <div className="videoWrapper">
-        <Grid item xs={12} sm={10} md={8} lg={6} xl={4}>
-          {/* Adjust the height dynamically based on the viewport width */}
-          <SimpleImageSlider
-            width={"100%"}
-            height={calculateHeight()} // Set the height dynamically
-            images={images}
-            showBullets={true}
-            showNavs={true}
-          />
-        </Grid>
-      </div>
+      <Container maxWidth="lg" sx={{ marginTop: 5, marginBottom: 5 }}>
+        <div className="videoWrapper">
+          <video className="videoTag" autoPlay loop muted>
+            <source src={sample} type="video/mp4" />
+          </video>
+        </div>
+      </Container>
+
+     
     </main>
   );
 }

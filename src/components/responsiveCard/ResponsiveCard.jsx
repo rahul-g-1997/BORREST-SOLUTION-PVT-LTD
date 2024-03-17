@@ -31,8 +31,12 @@ const ResponsiveCard = ({ image, title, description, link }) => {
         </CardContent>
       </CardActionArea>
       <CardContent>
-        
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography
+          gutterBottom
+          variant="h7"
+          component="div"
+          sx={{ fontFamily: "Carter One, sans-serif",color: "white" }}
+        >
           {title}
         </Typography>
         <Button
