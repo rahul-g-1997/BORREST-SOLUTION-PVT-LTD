@@ -20,11 +20,13 @@ import Logo from "../../assets/images/logo.png";
 import { NavLink } from "react-router-dom"; // Import NavLink component
 
 const drawerWidth = 240; // Specify the drawer width here
-const navItems = ["Home", "About", "Contact"];
+const navItems = ["Home", "About", "Contact", "Info Corner", "login"];
 const navLinks = [
   "/BORREST-SOLUTION-PVT-LTD/",
   "/BORREST-SOLUTION-PVT-LTD/about",
   "/BORREST-SOLUTION-PVT-LTD/contacts",
+  "/BORREST-SOLUTION-PVT-LTD/",
+  "/BORREST-SOLUTION-PVT-LTD/login",
 ]; // Paths for navigation
 
 function DrawerAppBar(props) {
