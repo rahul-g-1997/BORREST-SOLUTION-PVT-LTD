@@ -1,3 +1,7 @@
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { actions } from "../../rtk/reducer/loginReducer";
+import { store } from "../../rtk/store";
 import {
   Avatar,
   Button,
@@ -23,12 +27,33 @@ const customTheme = createTheme({
 });
 
 export default function LoginPage() {
+  const dispatch = useDispatch();
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
+    const { email, password } = formData;
+
+    if (email === "admin" && password === "admin") {
+      dispatch(actions.togglelogin());
+      setFormData({ email: "", password: "" });
+    } else {
+      console.log("Enter valid email and password");
+      setFormData({ email: "", password: "" });
+    }
+
+    console.log(store.getState());
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
     });
   };
 
@@ -84,6 +109,8 @@ export default function LoginPage() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                value={formData.email}
+                onChange={handleInputChange}
               />
               <TextField
                 margin="normal"
@@ -94,6 +121,8 @@ export default function LoginPage() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                value={formData.password}
+                onChange={handleInputChange}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
