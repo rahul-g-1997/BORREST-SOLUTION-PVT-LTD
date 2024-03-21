@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { actions } from "../../rtk/reducer/loginReducer";
-import { store } from "../../rtk/store";
+import { useNavigate } from "react-router-dom"; // Import useNavigate hook
+
+import store from "../../rtk/store";
 import {
   Avatar,
   Button,
@@ -17,6 +18,7 @@ import {
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { toggleLogin } from "../../rtk/reducer/loginReducer";
 
 const customTheme = createTheme({
   palette: {
@@ -28,6 +30,7 @@ const customTheme = createTheme({
 
 export default function LoginPage() {
   const dispatch = useDispatch();
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
   const [formData, setFormData] = useState({
     email: "",
@@ -39,8 +42,9 @@ export default function LoginPage() {
     const { email, password } = formData;
 
     if (email === "admin" && password === "admin") {
-      dispatch(actions.togglelogin());
+      dispatch(toggleLogin());
       setFormData({ email: "", password: "" });
+      navigate("/BORREST-SOLUTION-PVT-LTD/dashboard"); // Redirect to dashboard after successful login
     } else {
       console.log("Enter valid email and password");
       setFormData({ email: "", password: "" });

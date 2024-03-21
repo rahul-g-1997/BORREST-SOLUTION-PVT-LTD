@@ -18,6 +18,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import Logo from "../../assets/images/logo.png";
 import { NavLink } from "react-router-dom"; // Import NavLink component
+import { useSelector } from "react-redux";
 
 const drawerWidth = 240; // Specify the drawer width here
 const navItems = ["Home", "About", "Contact", "Info Corner", "login"];
@@ -63,7 +64,11 @@ function DrawerAppBar(props) {
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
+  const isLogin = useSelector((state) => state.login.isLogin);
 
+  if (isLogin) {
+    return null; // If user is logged in, return null to hide the footer
+  }
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />

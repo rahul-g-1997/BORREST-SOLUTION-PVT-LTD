@@ -6,13 +6,14 @@ const initialState = {
 
 const loginSlice = createSlice({
   name: "login",
-  initialState: initialState,
+  initialState,
   reducers: {
-    togglelogin: (state) => {
-      state.isLogin = true;
+    toggleLogin: (state) => {
+      state.isLogin = !state.isLogin;
     },
   },
 });
 
-// Destructuring to export reducer and actions directly
-export const { reducer: loginReducer, actions } = loginSlice;
+export const { toggleLogin } = loginSlice.actions; 
+
+export default loginSlice.reducer;

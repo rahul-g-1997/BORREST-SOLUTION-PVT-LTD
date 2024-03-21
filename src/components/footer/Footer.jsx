@@ -16,8 +16,14 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import Copyright from "../copyright/Copyright";
+import { useSelector } from "react-redux";
 
 const Footer = () => {
+  const isLogin = useSelector((state) => state.login.isLogin);
+
+  if (isLogin) {
+    return null; // If user is logged in, return null to hide the footer
+  }
   return (
     <section
       style={{

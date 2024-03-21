@@ -16,8 +16,21 @@ import Link from "@mui/material/Link";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
+  const navigate = useNavigate();
+
+  const isLogin = useSelector((state) => state.login.isLogin);
+
+  useEffect(() => {
+    if (!isLogin) {
+      navigate("/BORREST-SOLUTION-PVT-LTD/login");
+    }
+  }, [isLogin, navigate]);
+
   return (
     <Typography
       variant="body2"
@@ -82,8 +95,13 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 // TODO remove, this demo shouldn't need to reset the theme.
-const defaultTheme = createTheme();
-
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#046f3b",
+    },
+  },
+});
 export default function Dashboard() {
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
@@ -91,7 +109,7 @@ export default function Dashboard() {
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={theme}>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
         <AppBar position="absolute" open={open}>
