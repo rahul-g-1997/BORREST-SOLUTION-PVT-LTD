@@ -39,8 +39,8 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="https://data-engine.co/">
+        DataEngine Pvt Ltd
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -103,7 +103,7 @@ const theme = createTheme({
   },
 });
 export default function Dashboard() {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const toggleDrawer = () => {
     setOpen(!open);
   };

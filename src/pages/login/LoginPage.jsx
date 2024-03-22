@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom"; // Import useNavigate hook
-
+import { useNavigate } from "react-router-dom";
 import store from "../../rtk/store";
 import {
   Avatar,
@@ -15,6 +14,7 @@ import {
   Paper,
   Typography,
   Grid,
+  Alert,
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -30,12 +30,14 @@ const customTheme = createTheme({
 
 export default function LoginPage() {
   const dispatch = useDispatch();
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  const [loginError, setLoginError] = useState(false); // State to track login error
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -44,9 +46,9 @@ export default function LoginPage() {
     if (email === "admin" && password === "admin") {
       dispatch(toggleLogin());
       setFormData({ email: "", password: "" });
-      navigate("/BORREST-SOLUTION-PVT-LTD/dashboard"); // Redirect to dashboard after successful login
+      navigate("/BORREST-SOLUTION-PVT-LTD/dashboard");
     } else {
-      console.log("Enter valid email and password");
+      setLoginError(true); // Set login error to true if login fails
       setFormData({ email: "", password: "" });
     }
 
@@ -140,6 +142,11 @@ export default function LoginPage() {
               >
                 Sign In
               </Button>
+              {loginError && ( // Render Alert component if login error is true
+                <Alert variant="filled" severity="error" sx={{ mb: 2 }}>
+                  Incorrect email or password.
+                </Alert>
+              )}
               <Grid container>
                 <Grid item xs>
                   <Link href="#" variant="body2">
