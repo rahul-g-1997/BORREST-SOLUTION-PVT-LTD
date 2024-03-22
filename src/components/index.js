@@ -7,4 +7,5 @@ export { default as Counter } from "./counter/Counter";
 export { default as Blogs } from "./blogs/Blogs";
 export { default as Gallery } from "./Gallery/Gallery";
 export { default as Enquiry } from "./enquiry/Enquiry";
-export { default as PhotoUpload } from "./photoUpload/PhotoUpload";
+export { default as GalleryUpload } from "./galleryUpload/GalleryUpload";
+export { default as BlogsUpload } from "./blogsUpload/BlogsUpload";

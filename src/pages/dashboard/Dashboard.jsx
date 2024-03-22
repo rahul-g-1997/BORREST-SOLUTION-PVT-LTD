@@ -26,8 +26,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import RssFeedIcon from "@mui/icons-material/RssFeed";
 import ChatIcon from "@mui/icons-material/Chat";
 import CollectionsIcon from "@mui/icons-material/Collections";
-import { Gallery } from "../../components";
-
+import {  BlogsUpload, GalleryUpload } from "../../components";
 
 function Copyright(props) {
   const navigate = useNavigate();
@@ -211,7 +210,8 @@ export default function Dashboard() {
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
-              <Gallery/>
+              <BlogsUpload/>
+              <GalleryUpload />
             </Grid>
             <Copyright sx={{ pt: 4 }} />
           </Container>
