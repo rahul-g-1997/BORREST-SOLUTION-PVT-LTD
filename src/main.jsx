@@ -13,6 +13,7 @@ import {
   RouterProvider,
   Route,
 } from "react-router-dom";
+import { Blogs, Gallery } from "./components";
 
 // Create root element and root instance
 const rootElement = document.getElementById("root");
@@ -31,6 +32,8 @@ const route = createBrowserRouter(
       <Route path="about" element={<About />} />
       <Route path="login" element={<LoginPage />} />
       <Route path="dashboard" element={<Dashboard />} />
+      <Route path="gallery" element={<Gallery />} />
+      <Route path="blogs" element={<Blogs />} />
     </Route>
   )
 );

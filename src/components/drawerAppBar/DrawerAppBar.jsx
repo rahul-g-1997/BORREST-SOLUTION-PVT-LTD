@@ -21,12 +21,13 @@ import { NavLink } from "react-router-dom"; // Import NavLink component
 import { useSelector } from "react-redux";
 
 const drawerWidth = 240; // Specify the drawer width here
-const navItems = ["Home", "About", "Contact", "Info Corner", "login"];
+const navItems = ["Home", "About", "Article", "Gallery", "Contact", "login"];
 const navLinks = [
   "/BORREST-SOLUTION-PVT-LTD/",
   "/BORREST-SOLUTION-PVT-LTD/about",
+  "/BORREST-SOLUTION-PVT-LTD/blogs",
+  "/BORREST-SOLUTION-PVT-LTD/gallery",
   "/BORREST-SOLUTION-PVT-LTD/contacts",
-  "/BORREST-SOLUTION-PVT-LTD/",
   "/BORREST-SOLUTION-PVT-LTD/login",
 ]; // Paths for navigation
 
