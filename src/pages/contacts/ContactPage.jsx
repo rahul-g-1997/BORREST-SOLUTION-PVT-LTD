@@ -8,14 +8,15 @@ import {
   Box,
   ThemeProvider,
 } from "@mui/material";
-import emailjs from "@emailjs/browser"; // Import emailjs library
+import emailjs from "@emailjs/browser";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
-import { createTheme } from "@mui/material/styles"; // Import createTheme
+import { createTheme } from "@mui/material/styles";
+import axios from "axios"; // Import axios
 
 const ContactPage = () => {
-  const form = useRef(); // Create a ref for the form
+  const form = useRef();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -29,34 +30,47 @@ const ContactPage = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    emailjs
-      .sendForm(
+    try {
+      // Send email
+      const emailResult = await emailjs.sendForm(
         "service_l9krszx",
         "template_e73ritz",
         form.current,
         "cVZZd4pbPF11Q9kC7"
-      )
-      .then(
-        (result) => {
-          console.log("Email sent successfully:", result.text);
-          // Reset form after submission
-          setFormData({
-            name: "",
-            email: "",
-            contactNumber: "",
-            message: "",
-          });
-        },
-        (error) => {
-          console.error("Email sending failed:", error.text);
+      );
+      console.log("Email sent successfully:", emailResult.text);
+
+      // Send form data to backend
+      const backendResult = await axios.post(
+        "http://127.0.0.1:8000/api/store-enquiry",
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          contact: formData.contactNumber,
+          date: new Date().toISOString().slice(0, 10), // Assuming you want the current date
         }
       );
+      console.log(
+        "Form submitted to backend successfully:",
+        backendResult.data
+      );
+
+      // Reset form after submission
+      setFormData({
+        name: "",
+        email: "",
+        contactNumber: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
   };
 
-  // Custom theme with primary color set to #046f3b
   const customTheme = createTheme({
     palette: {
       primary: {
@@ -118,9 +132,7 @@ const ContactPage = () => {
                 alignItems: "center",
               }}
             >
-              {/* Email icon */}
               <EmailIcon sx={{ color: "#ffffff", marginRight: "10px" }} />
-              {/* Email */}
               <Typography variant="body1" sx={{ color: "#ffffff" }}>
                 borrestsolutions@gmail.com
               </Typography>
@@ -136,15 +148,11 @@ const ContactPage = () => {
                 alignItems: "center",
               }}
             >
-              {/* Phone icon */}
               <PhoneIcon sx={{ color: "#ffffff", marginRight: "10px" }} />
-              {/* Contact number */}
               <Typography variant="body1" sx={{ color: "#ffffff" }}>
                 +91-9896810237
               </Typography>
             </Grid>
-
-            {/* Rest of your contact details */}
           </Grid>
           <Grid item xs={12} md={6}>
             <Typography>

@@ -11,7 +11,6 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Badge from "@mui/material/Badge";
 import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
@@ -22,11 +21,11 @@ import { useNavigate } from "react-router-dom";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import DashboardIcon from "@mui/icons-material/Dashboard";
 import RssFeedIcon from "@mui/icons-material/RssFeed";
 import ChatIcon from "@mui/icons-material/Chat";
 import CollectionsIcon from "@mui/icons-material/Collections";
-import {  BlogsUpload, GalleryUpload } from "../../components";
+import { BlogsUpload, GalleryUpload } from "../../components";
+import { useState } from "react";
 
 function Copyright(props) {
   const navigate = useNavigate();
@@ -111,6 +110,8 @@ const theme = createTheme({
   },
 });
 export default function Dashboard() {
+  const [showBlogsUpload, setShowBlogsUpload] = useState(true);
+  const [showGalleryUpload, setShowGalleryUpload] = useState(true);
   const [open, setOpen] = React.useState(false);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -169,24 +170,29 @@ export default function Dashboard() {
           </Toolbar>
           <Divider />
           <List component="nav">
-            <ListItemButton>
-              <ListItemIcon>
-                <DashboardIcon />
-              </ListItemIcon>
-              <ListItemText primary="Dashboard" />
-            </ListItemButton>
-            <ListItemButton>
+            <ListItemButton
+              onClick={() => {
+                setShowBlogsUpload(true);
+                setShowGalleryUpload(false);
+              }}
+            >
               <ListItemIcon>
                 <RssFeedIcon />
               </ListItemIcon>
               <ListItemText primary="Blogs" />
             </ListItemButton>
-            <ListItemButton>
+            <ListItemButton
+              onClick={() => {
+                setShowBlogsUpload(false);
+                setShowGalleryUpload(true);
+              }}
+            >
               <ListItemIcon>
                 <CollectionsIcon />
               </ListItemIcon>
               <ListItemText primary="Gallery" />
             </ListItemButton>
+
             <ListItemButton>
               <ListItemIcon>
                 <ChatIcon />
@@ -209,10 +215,8 @@ export default function Dashboard() {
         >
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <Grid container spacing={3}>
-              <BlogsUpload/>
-              <GalleryUpload />
-            </Grid>
+            {showBlogsUpload && <BlogsUpload />}
+            {showGalleryUpload && <GalleryUpload />}
             <Copyright sx={{ pt: 4 }} />
           </Container>
         </Box>
