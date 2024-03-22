@@ -19,6 +19,13 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import RssFeedIcon from "@mui/icons-material/RssFeed";
+import ChatIcon from "@mui/icons-material/Chat";
+import CollectionsIcon from "@mui/icons-material/Collections";
 
 function Copyright(props) {
   const navigate = useNavigate();
@@ -160,7 +167,32 @@ export default function Dashboard() {
             </IconButton>
           </Toolbar>
           <Divider />
-          <List component="nav"></List>
+          <List component="nav">
+            <ListItemButton>
+              <ListItemIcon>
+                <DashboardIcon />
+              </ListItemIcon>
+              <ListItemText primary="Dashboard" />
+            </ListItemButton>
+            <ListItemButton>
+              <ListItemIcon>
+                <RssFeedIcon />
+              </ListItemIcon>
+              <ListItemText primary="Blogs" />
+            </ListItemButton>
+            <ListItemButton>
+              <ListItemIcon>
+                <CollectionsIcon />
+              </ListItemIcon>
+              <ListItemText primary="Gallery" />
+            </ListItemButton>
+            <ListItemButton>
+              <ListItemIcon>
+                <ChatIcon />
+              </ListItemIcon>
+              <ListItemText primary="Enquiry" />
+            </ListItemButton>
+          </List>
         </Drawer>
         <Box
           component="main"
