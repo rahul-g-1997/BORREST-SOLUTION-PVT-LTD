@@ -101,7 +101,7 @@ const BlogsUpload = () => {
   };
 
   return (
-    <Container maxWidth="lg" sx={{ marginTop: 11, marginBottom: 5 }}>
+    <Container maxWidth="lg" sx={{ marginTop: 1, marginBottom: 5 }}>
       <Typography
         sx={{
           color: "#046f3b",

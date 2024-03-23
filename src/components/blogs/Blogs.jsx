@@ -49,7 +49,7 @@ const Blogs = () => {
         <Grid container spacing={isSmallScreen ? 2 : 4}>
           {blogs.map((blog) => (
             <Grid key={blog.id} item xs={12} sm={6} md={4}>
-              <Card>
+              <Card sx={{ height: "100%" }}>
                 <CardActionArea>
                   <CardMedia
                     component="img"

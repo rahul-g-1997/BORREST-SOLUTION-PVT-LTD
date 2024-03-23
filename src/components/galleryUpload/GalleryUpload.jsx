@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import {
   Grid,
@@ -22,45 +22,25 @@ const GalleryUpload = () => {
   const [images, setImages] = useState([]);
   const [title, setTitle] = useState("");
   const [file, setFile] = useState(null);
-  const [message, setMessage] = useState("");
+  const fileInputRef = useRef(null);
 
-   useEffect(() => {
-     const fetchImages = async () => {
-       try {
-         const response = await axios.get(
-           "http://127.0.0.1:8000/api/get_gallery"
-         );
-         // Prepend base URL to image URLs
-         const baseUrl = "http://127.0.0.1:8000";
-         const imagesWithFullUrl = response.data.map((image) => ({
-           ...image,
-           url: `${baseUrl}/${image.image}`,
-         }));
-         setImages(imagesWithFullUrl);
-       } catch (error) {
-         console.error("Error fetching images:", error);
-       }
-     };
+  useEffect(() => {
+    fetchImages();
+  }, []);
 
-     fetchImages();
-   }, []);
-  
-    const fetchImages = async () => {
-      try {
-        const response = await axios.get(
-          "http://127.0.0.1:8000/api/get_gallery"
-        );
-        // Prepend base URL to image URLs
-        const baseUrl = "http://127.0.0.1:8000";
-        const imagesWithFullUrl = response.data.map((image) => ({
-          ...image,
-          url: `${baseUrl}/${image.image}`,
-        }));
-        setImages(imagesWithFullUrl);
-      } catch (error) {
-        console.error("Error fetching images:", error);
-      }
-    };
+  const fetchImages = async () => {
+    try {
+      const response = await axios.get("http://127.0.0.1:8000/api/get_gallery");
+      const baseUrl = "http://127.0.0.1:8000";
+      const imagesWithFullUrl = response.data.map((image) => ({
+        ...image,
+        url: `${baseUrl}/${image.image}`,
+      }));
+      setImages(imagesWithFullUrl);
+    } catch (error) {
+      console.error("Error fetching images:", error);
+    }
+  };
 
   const handleOpen = (image) => {
     setSelectedImage(image);
@@ -79,26 +59,20 @@ const GalleryUpload = () => {
     setFile(event.target.files[0]);
   };
 
-   const handleDelete = async (id) => {
-     try {
-       const response = await axios.delete(
-         `http://127.0.0.1:8000/api/delete_gallery/${id}`
-       );
-       console.log("Delete response status:", response.status); // Log response status
-       if (response.status === 200) {
-         // Refresh gallery after deletion
-         fetchImages();
-       }
-     } catch (error) {
-       console.error("Error deleting image:", error);
-     }
-   }; 
-  const uploadPhoto = async () => {
-    if (!file) {
-      setMessage("Please select a photo to upload.");
-      return;
+  const handleDelete = async (id) => {
+    try {
+      const response = await axios.delete(
+        `http://127.0.0.1:8000/api/delete_gallery/${id}`
+      );
+      if (response.status === 200) {
+        fetchImages();
+      }
+    } catch (error) {
+      console.error("Error deleting image:", error);
     }
+  };
 
+  const uploadPhoto = async () => {
     const formData = new FormData();
     formData.append("title", title);
     formData.append("image", file);
@@ -116,78 +90,67 @@ const GalleryUpload = () => {
         throw new Error("Upload failed");
       }
 
-      const data = await response.json();
-      setMessage(data.message);
-
-      // Clear form after successful upload
       setTitle("");
       setFile(null);
 
-      // Refresh gallery after upload
       fetchImages();
     } catch (error) {
       console.error("Error:", error);
-      setMessage("Upload failed. Please try again.");
     }
   };
 
-
-
-
   return (
-    <Container maxWidth="lg" sx={{ marginTop: 7, marginBottom: 5 }}>
-      <Container maxWidth="sm">
-        <Typography variant="h4" gutterBottom>
-          Upload Photo
-        </Typography>
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
+    <Container maxWidth="lg" sx={{ marginBottom: 5 }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-start",
+          marginBottom: 30,
+        }}
+      >
+        <Container maxWidth="lg">
+          <Typography
+            sx={{
+              color: "#046f3b",
+              fontFamily: "Carter One, sans-serif",
+            }}
+            variant="h4"
+            align="center"
+            gutterBottom
+            margin={3}
+          >
+            Gallery
+          </Typography>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <TextField
-              fullWidth
               label="Title"
               value={title}
               onChange={handleTitleChange}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <input
-              accept="image/*"
-              id="contained-button-file"
-              type="file"
-              onChange={handleFileChange}
-              style={{ display: "none" }}
+              style={{ flex: 1 }} // Adjust the width of the TextField
             />
             <label htmlFor="contained-button-file">
+              <input
+                accept="image/*"
+                id="contained-button-file"
+                type="file"
+                onChange={handleFileChange}
+                style={{ display: "none" }}
+                ref={fileInputRef}
+              />
               <Button variant="contained" component="span">
-                Choose Photo
+                Add Image
               </Button>
             </label>
             {file && <Typography>{file.name}</Typography>}
-          </Grid>
-          <Grid item xs={12}>
             <Button variant="contained" color="primary" onClick={uploadPhoto}>
               Upload
             </Button>
-          </Grid>
-          <Grid item xs={12}>
-            {message && <Typography>{message}</Typography>}
-          </Grid>
-        </Grid>
-      </Container>
-      <Typography
-        sx={{
-          color: "#046f3b",
-          fontFamily: "Carter One, sans-serif",
-        }}
-        variant="h4"
-        align="center"
-        gutterBottom
-        margin={7}
-      >
-        Gallery
-      </Typography>
+          </div>
+        </Container>
+      </div>
+
       <Grid container spacing={2}>
-        {images.map((image, index) => (
+        {[...images].reverse().map((image, index) => (
           <Grid key={index} item xs={6} sm={4} md={3}>
             <Card sx={{ position: "relative", minHeight: 250 }}>
               <CardActionArea onClick={() => handleOpen(image)}>
@@ -198,13 +161,18 @@ const GalleryUpload = () => {
                   alt={image.title}
                 />
                 <Typography variant="subtitle1" align="center">
-                  {image.title}
+                  {image.title} {console.log(image.url)}
                 </Typography>
               </CardActionArea>
               <IconButton
                 aria-label="delete"
                 onClick={() => handleDelete(image.id)}
-                sx={{ position: "absolute", top: 5, right: 5, color: "error" }}
+                sx={{
+                  position: "absolute",
+                  top: 5,
+                  right: 5,
+                  color: "error",
+                }}
               >
                 <DeleteIcon />
               </IconButton>

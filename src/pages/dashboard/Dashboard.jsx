@@ -24,7 +24,7 @@ import ListItemText from "@mui/material/ListItemText";
 import RssFeedIcon from "@mui/icons-material/RssFeed";
 import ChatIcon from "@mui/icons-material/Chat";
 import CollectionsIcon from "@mui/icons-material/Collections";
-import { BlogsUpload, GalleryUpload } from "../../components";
+import { BlogsUpload, Enquiry, GalleryUpload } from "../../components";
 import { useState } from "react";
 
 function Copyright(props) {
@@ -111,7 +111,8 @@ const theme = createTheme({
 });
 export default function Dashboard() {
   const [showBlogsUpload, setShowBlogsUpload] = useState(true);
-  const [showGalleryUpload, setShowGalleryUpload] = useState(true);
+  const [showGalleryUpload, setShowGalleryUpload] = useState(false);
+  const [showEnquiry, setShowEnquiry] = useState(false);
   const [open, setOpen] = React.useState(false);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -174,6 +175,7 @@ export default function Dashboard() {
               onClick={() => {
                 setShowBlogsUpload(true);
                 setShowGalleryUpload(false);
+                setShowEnquiry(false); // Ensure Enquiry component is hidden when Blogs is clicked
               }}
             >
               <ListItemIcon>
@@ -185,6 +187,7 @@ export default function Dashboard() {
               onClick={() => {
                 setShowBlogsUpload(false);
                 setShowGalleryUpload(true);
+                setShowEnquiry(false); 
               }}
             >
               <ListItemIcon>
@@ -192,8 +195,13 @@ export default function Dashboard() {
               </ListItemIcon>
               <ListItemText primary="Gallery" />
             </ListItemButton>
-
-            <ListItemButton>
+            <ListItemButton
+              onClick={() => {
+                setShowBlogsUpload(false);
+                setShowGalleryUpload(false);
+                setShowEnquiry(true); 
+              }}
+            >
               <ListItemIcon>
                 <ChatIcon />
               </ListItemIcon>
@@ -217,6 +225,7 @@ export default function Dashboard() {
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             {showBlogsUpload && <BlogsUpload />}
             {showGalleryUpload && <GalleryUpload />}
+            {showEnquiry && <Enquiry />}
             <Copyright sx={{ pt: 4 }} />
           </Container>
         </Box>
