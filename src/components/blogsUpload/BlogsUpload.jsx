@@ -11,15 +11,11 @@ import {
   TextField,
   Button,
   IconButton,
-  useMediaQuery,
-  useTheme,
   Container,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 const BlogsUpload = () => {
-  const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const [blogs, setBlogs] = useState([]);
   const [newBlog, setNewBlog] = useState({
     title: "",
@@ -73,7 +69,6 @@ const BlogsUpload = () => {
         }
       );
       if (response.status === 200) {
-        // Refresh blogs after adding a new blog
         setNewBlog({
           title: "",
           description: "",
@@ -92,7 +87,6 @@ const BlogsUpload = () => {
         `http://127.0.0.1:8000/api/delete_blog/${blogId}`
       );
       if (response.status === 200) {
-        // Refresh blogs after deleting a blog
         fetchBlogs();
       }
     } catch (error) {
@@ -101,21 +95,18 @@ const BlogsUpload = () => {
   };
 
   return (
-    <Container maxWidth="lg" sx={{ marginTop: 1, marginBottom: 5 }}>
+    <Container maxWidth="lg" sx={{ marginBottom: 5 }}>
       <Typography
-        sx={{
-          color: "#046f3b",
-          fontFamily: "Carter One, sans-serif",
-        }}
         variant="h4"
         align="center"
         gutterBottom
-        margin={7}
+        marginTop={7}
+        sx={{ color: "#046f3b", fontFamily: "Carter One, sans-serif" }}
       >
         Articles
       </Typography>
-      <Box mt={4} p={isSmallScreen ? 2 : 4}>
-        <Grid container spacing={isSmallScreen ? 2 : 4}>
+      <Box mt={4}>
+        <Grid container spacing={4}>
           {/* New Blog Form */}
           <Grid item xs={12}>
             <form onSubmit={handleSubmit} encType="multipart/form-data">
@@ -125,14 +116,19 @@ const BlogsUpload = () => {
                 name="title"
                 value={newBlog.title}
                 onChange={handleInputChange}
+                variant="outlined"
+                margin="normal"
               />
               <TextField
                 fullWidth
                 multiline
+                rows={4}
                 label="Description"
                 name="description"
                 value={newBlog.description}
                 onChange={handleInputChange}
+                variant="outlined"
+                margin="normal"
               />
               <input
                 accept="image/*"
@@ -147,48 +143,51 @@ const BlogsUpload = () => {
                 </Button>
               </label>
               {newBlog.image && <Typography>{newBlog.image.name}</Typography>}
-              <Button variant="contained" color="primary" type="submit">
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                sx={{ marginLeft: 2 }}
+              >
                 Add Blog
               </Button>
             </form>
           </Grid>
           {/* Display Existing Blogs */}
-          <Grid container spacing={isSmallScreen ? 2 : 4}>
-            {blogs.map((blog) => (
-              <Grid key={blog.id} item xs={12} sm={6} md={4}>
-                <Card sx={{ position: "relative" }}>
-                  <CardActionArea>
-                    <CardMedia
-                      component="img"
-                      height="200"
-                      image={blog.image}
-                      alt={blog.title}
-                    />
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">
-                        {blog.title}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {blog.description}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                  <IconButton
-                    aria-label="delete"
-                    onClick={() => handleDelete(blog.id)}
-                    sx={{
-                      position: "absolute",
-                      top: 5,
-                      right: 5,
-                      color: "error",
-                    }}
-                  >
-                    <DeleteIcon />
-                  </IconButton>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
+          {blogs.map((blog) => (
+            <Grid key={blog.id} item xs={12} sm={6} md={4}>
+              <Card sx={{ position: "relative" }}>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    height="200"
+                    image={blog.image}
+                    alt={blog.title}
+                  />
+                  <CardContent>
+                    <Typography variant="h6" gutterBottom>
+                      {blog.title}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {blog.description}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <IconButton
+                  aria-label="delete"
+                  onClick={() => handleDelete(blog.id)}
+                  sx={{
+                    position: "absolute",
+                    top: 0,
+                    right: 0,
+                    color: "error",
+                  }}
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </Card>
+            </Grid>
+          ))}
         </Grid>
       </Box>
     </Container>
