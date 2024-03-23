@@ -17,6 +17,7 @@ const Blogs = () => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const [blogs, setBlogs] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -25,6 +26,7 @@ const Blogs = () => {
         setBlogs(response.data);
       } catch (error) {
         console.error("Error fetching blogs:", error);
+        setError("Error fetching blogs. Please try again later.");
       }
     };
 
@@ -46,30 +48,36 @@ const Blogs = () => {
         Articles
       </Typography>
       <Box mt={4} p={isSmallScreen ? 2 : 4}>
-        <Grid container spacing={isSmallScreen ? 2 : 4}>
-          {blogs.map((blog) => (
-            <Grid key={blog.id} item xs={12} sm={6} md={4}>
-              <Card sx={{ height: "100%" }}>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    height="200"
-                    image={blog.image}
-                    alt={blog.title}
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      {blog.title}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {blog.description}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+        {error ? (
+          <Typography variant="body1" color="error" align="center">
+            {error}
+          </Typography>
+        ) : (
+          <Grid container spacing={isSmallScreen ? 2 : 4}>
+            {blogs.map((blog) => (
+              <Grid key={blog.id} item xs={12} sm={6} md={4}>
+                <Card sx={{ height: "100%" }}>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      height="200"
+                      image={`http://127.0.0.1:8000/images/${blog.image}`} // Assuming image URL is correct
+                      alt={blog.title}
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                        {blog.title}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {blog.description}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        )}
       </Box>
     </Container>
   );

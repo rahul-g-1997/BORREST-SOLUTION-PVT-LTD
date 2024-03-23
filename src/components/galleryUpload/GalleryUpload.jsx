@@ -31,7 +31,7 @@ const GalleryUpload = () => {
   const fetchImages = async () => {
     try {
       const response = await axios.get("http://127.0.0.1:8000/api/get_gallery");
-      const baseUrl = "http://127.0.0.1:8000";
+      const baseUrl = "http://127.0.0.1:8000/images";
       const imagesWithFullUrl = response.data.map((image) => ({
         ...image,
         url: `${baseUrl}/${image.image}`,

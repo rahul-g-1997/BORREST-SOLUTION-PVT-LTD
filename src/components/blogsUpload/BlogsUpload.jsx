@@ -12,6 +12,9 @@ import {
   Button,
   IconButton,
   Container,
+  Select,
+  MenuItem,
+  InputLabel,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
@@ -21,7 +24,12 @@ const BlogsUpload = () => {
     title: "",
     description: "",
     image: null,
+    category: "", // Add category field
   });
+
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
 
   const fetchBlogs = async () => {
     try {
@@ -31,10 +39,6 @@ const BlogsUpload = () => {
       console.error("Error fetching blogs:", error);
     }
   };
-
-  useEffect(() => {
-    fetchBlogs();
-  }, []);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -57,6 +61,7 @@ const BlogsUpload = () => {
     formData.append("title", newBlog.title);
     formData.append("description", newBlog.description);
     formData.append("image", newBlog.image);
+    formData.append("category", newBlog.category); // Add category to FormData
 
     try {
       const response = await axios.post(
@@ -73,6 +78,7 @@ const BlogsUpload = () => {
           title: "",
           description: "",
           image: null,
+          category: "", // Reset category after submission
         });
         fetchBlogs();
       }
@@ -110,6 +116,20 @@ const BlogsUpload = () => {
           {/* New Blog Form */}
           <Grid item xs={12}>
             <form onSubmit={handleSubmit} encType="multipart/form-data">
+              <InputLabel id="demo-simple-select-label">Category</InputLabel>
+              <Select
+                fullWidth
+                labelId="category-label"
+                name="category"
+                value={newBlog.category}
+                onChange={handleInputChange}
+                variant="outlined"
+                margin="normal"
+              >
+                <MenuItem value="Blog">Blog</MenuItem>
+                <MenuItem value="Procedure">Procedure</MenuItem>
+              </Select>
+
               <TextField
                 fullWidth
                 label="Title"
@@ -149,7 +169,7 @@ const BlogsUpload = () => {
                 type="submit"
                 sx={{ marginLeft: 2 }}
               >
-                Add Blog
+                Save
               </Button>
             </form>
           </Grid>
@@ -161,7 +181,7 @@ const BlogsUpload = () => {
                   <CardMedia
                     component="img"
                     height="200"
-                    image={blog.image}
+                    image={`http://127.0.0.1:8000/images/${blog.image}`} // Assuming image URL is correct
                     alt={blog.title}
                   />
                   <CardContent>

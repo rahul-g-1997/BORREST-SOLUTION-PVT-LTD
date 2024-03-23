@@ -24,7 +24,7 @@ const Gallery = () => {
           "http://127.0.0.1:8000/api/get_gallery"
         );
         // Prepend base URL to image URLs
-        const baseUrl = "http://127.0.0.1:8000";
+        const baseUrl = "http://127.0.0.1:8000/images";
         const imagesWithFullUrl = response.data.map((image) => ({
           ...image,
           url: `${baseUrl}/${image.image}`,
@@ -48,7 +48,7 @@ const Gallery = () => {
   };
 
   return (
-    <Container maxWidth="lg" sx={{  marginBottom: 5 }}>
+    <Container maxWidth="lg" sx={{ marginTop:11,  marginBottom: 5 }}>
       <Typography
         sx={{
           color: "#046f3b",
