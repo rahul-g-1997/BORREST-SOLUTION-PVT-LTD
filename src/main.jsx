@@ -5,7 +5,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 import App from "./App";
 import theme from "./theme";
-import { About, ContactPage, Dashboard, Error, Home, LoginPage } from "./pages";
+import { About, ContactPage, Dashboard, Error, Home, LoginPage, Blogs, Gallery} from "./pages";
 
 import {
   createRoutesFromElements,
@@ -13,7 +13,6 @@ import {
   RouterProvider,
   Route,
 } from "react-router-dom";
-import { Blogs, Gallery } from "./components";
 
 // Create root element and root instance
 const rootElement = document.getElementById("root");
@@ -23,7 +22,7 @@ const root = createRoot(rootElement);
 const route = createBrowserRouter(
   createRoutesFromElements(
     <Route
-      path="/BORREST-SOLUTION-PVT-LTD"
+      path="/"
       element={<App />}
       errorElement={<Error />}
     >

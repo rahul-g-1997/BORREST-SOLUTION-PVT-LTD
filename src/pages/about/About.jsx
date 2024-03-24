@@ -2,9 +2,13 @@ import { Typography, Container, Grid } from "@mui/material";
 
 export default function About() {
   return (
-    <Container maxWidth="md" sx={{ marginTop: 11 }}>
-      <Grid container spacing={3}>
+    // Container for About section with maximum width set to "md"
+    <Container maxWidth="md" sx={{ marginTop: 3 }}>
+      {/* Grid container with spacing between items */}
+      <Grid container spacing={3} paddingTop={10}>
+        {/* Grid item for the heading */}
         <Grid item xs={12}>
+          {/* Typography for the heading */}
           <Typography
             sx={{
               color: "#046f3b",
@@ -17,7 +21,9 @@ export default function About() {
             About Borrest Solution Pvt Ltd
           </Typography>
         </Grid>
+        {/* Grid item for the first paragraph */}
         <Grid item xs={12}>
+          {/* Typography for the first paragraph */}
           <Typography variant="body1" paragraph>
             At Borrest Solution Pvt Ltd, we are passionate about the
             transformative power of trees. Our mission is to not only beautify
@@ -25,6 +31,7 @@ export default function About() {
             strategic tree planting and maintenance.
           </Typography>
         </Grid>
+        {/* Repeat similar structure for other paragraphs */}
         <Grid item xs={12}>
           <Typography variant="body1" paragraph>
             With our &quot;Grow Trees Grow Money&quot; philosophy, we offer a
@@ -35,6 +42,7 @@ export default function About() {
             achieve your goals.
           </Typography>
         </Grid>
+        {/* Additional paragraphs */}
         <Grid item xs={12}>
           <Typography variant="body1" paragraph>
             Our team of experienced professionals is committed to delivering
@@ -43,6 +51,7 @@ export default function About() {
             we ensure that your investment yields long-term benefits.
           </Typography>
         </Grid>
+        {/* Additional paragraphs */}
         <Grid item xs={12}>
           <Typography variant="body1" paragraph>
             We understand the importance of sustainability and environmental
@@ -51,6 +60,7 @@ export default function About() {
             solutions in our projects.
           </Typography>
         </Grid>
+        {/* Additional paragraphs */}
         <Grid item xs={12}>
           <Typography variant="body1" paragraph>
             Beyond our commitment to trees and the environment, we value
@@ -59,6 +69,7 @@ export default function About() {
             environmental education.
           </Typography>
         </Grid>
+        {/* Final paragraph */}
         <Grid item xs={12}>
           <Typography variant="body1" paragraph>
             Join us in our mission to make the world a greener, more prosperous

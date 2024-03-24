@@ -15,7 +15,8 @@ import Link from "@mui/material/Link";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleLogin } from "../../rtk/reducer/loginReducer";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -23,18 +24,18 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import RssFeedIcon from "@mui/icons-material/RssFeed";
 import ChatIcon from "@mui/icons-material/Chat";
+import LogoutIcon from "@mui/icons-material/Logout";
 import CollectionsIcon from "@mui/icons-material/Collections";
 import { BlogsUpload, Enquiry, GalleryUpload } from "../../components";
 import { useState } from "react";
 
 function Copyright(props) {
   const navigate = useNavigate();
-
   const isLogin = useSelector((state) => state.login.isLogin);
 
   useEffect(() => {
     if (!isLogin) {
-      navigate("/BORREST-SOLUTION-PVT-LTD/login");
+      navigate("/login");
     }
   }, [isLogin, navigate]);
 
@@ -101,7 +102,6 @@ const Drawer = styled(MuiDrawer, {
   },
 }));
 
-// TODO remove, this demo shouldn't need to reset the theme.
 const theme = createTheme({
   palette: {
     primary: {
@@ -109,6 +109,7 @@ const theme = createTheme({
     },
   },
 });
+
 export default function Dashboard() {
   const [showBlogsUpload, setShowBlogsUpload] = useState(true);
   const [showGalleryUpload, setShowGalleryUpload] = useState(false);
@@ -117,6 +118,7 @@ export default function Dashboard() {
   const toggleDrawer = () => {
     setOpen(!open);
   };
+  const dispatch = useDispatch();
 
   return (
     <ThemeProvider theme={theme}>
@@ -125,7 +127,7 @@ export default function Dashboard() {
         <AppBar position="absolute" open={open}>
           <Toolbar
             sx={{
-              pr: "24px", // keep right padding when drawer closed
+              pr: "24px",
             }}
           >
             <IconButton
@@ -175,7 +177,7 @@ export default function Dashboard() {
               onClick={() => {
                 setShowBlogsUpload(true);
                 setShowGalleryUpload(false);
-                setShowEnquiry(false); // Ensure Enquiry component is hidden when Blogs is clicked
+                setShowEnquiry(false);
               }}
             >
               <ListItemIcon>
@@ -187,7 +189,7 @@ export default function Dashboard() {
               onClick={() => {
                 setShowBlogsUpload(false);
                 setShowGalleryUpload(true);
-                setShowEnquiry(false); 
+                setShowEnquiry(false);
               }}
             >
               <ListItemIcon>
@@ -199,13 +201,19 @@ export default function Dashboard() {
               onClick={() => {
                 setShowBlogsUpload(false);
                 setShowGalleryUpload(false);
-                setShowEnquiry(true); 
+                setShowEnquiry(true);
               }}
             >
               <ListItemIcon>
                 <ChatIcon />
               </ListItemIcon>
               <ListItemText primary="Enquiry" />
+            </ListItemButton>
+            <ListItemButton onClick={() => dispatch(toggleLogin())}>
+              <ListItemIcon>
+                <LogoutIcon />
+              </ListItemIcon>
+              <ListItemText primary="Log Out" />
             </ListItemButton>
           </List>
         </Drawer>

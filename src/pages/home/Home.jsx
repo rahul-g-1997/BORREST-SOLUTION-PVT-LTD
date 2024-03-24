@@ -1,22 +1,20 @@
-import { Container, Typography, Grid } from "@mui/material";
-import "./home.css";
-import undraw_developer_activity_img from "../../assets/images/undraw_developer_activity.svg";
-import { TypeAnimation } from "react-type-animation";
 import { NavLink } from "react-router-dom";
-import { ResponsiveCard } from "../../components";
-
-
-import cardsData from "../../data/cardsData";
-
-import sample from "../../assets/video/bgvideo.mp4";
-
-
+import { TypeAnimation } from "react-type-animation";
+import { Container, Typography, Grid } from "@mui/material";
+import { ResponsiveCard } from "../../components"; // Importing components
+import cardsData from "../../data/cardsData"; // Importing data
+import sample from "../../assets/video/bgvideo.mp4"; // Importing video file
+import undraw_developer_activity_img from "../../assets/images/undraw_developer_activity.svg"; // Importing image file
+import "./home.css"; // Importing styles
 
 export default function Home() {
   return (
     <main>
+      {/* Hero section */}
       <section className="hero" id="hero__section">
+        {/* Left side of the hero section */}
         <article className="left-hero">
+          {/* Typing animation */}
           <TypeAnimation
             className="txt"
             sequence={[
@@ -30,12 +28,14 @@ export default function Home() {
             style={{ fontSize: "2em", display: "inline-block" }}
             repeat={Infinity}
           />
+          {/* Description */}
           <h1 className="desc">
             At Borrest Solution Pvt Ltd, we believe in the transformative power
             of trees. With our &quot;Grow Trees Grow Money&quot; philosophy, we
             offer a range of services that not only beautify your surroundings
             but also contribute to your financial well-being.
           </h1>
+          {/* Social links */}
           <div className="soclinks">
             <NavLink to="/BORREST-SOLUTION-PVT-LTD/contacts">
               <button className="btn" type="button">
@@ -44,7 +44,9 @@ export default function Home() {
             </NavLink>
           </div>
         </article>
+        {/* Right side of the hero section */}
         <div className="right-hero">
+          {/* Developer activity image */}
           <img
             id="hero__img"
             src={undraw_developer_activity_img}
@@ -53,8 +55,10 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Projects section */}
       <section className="projects" id="project__section">
         <Container sx={{ mt: -7 }}>
+          {/* Projects heading */}
           <Typography
             variant="h4"
             className="project-heading"
@@ -68,7 +72,9 @@ export default function Home() {
           >
             Our Services
           </Typography>
+          {/* Grid for displaying project cards */}
           <Grid container spacing={3}>
+            {/* Mapping through cardsData to render project cards */}
             {cardsData.map((card, index) => (
               <Grid item xs={12} sm={6} md={3} key={index}>
                 {/* Render a Card component for each item in the cardsData array */}
@@ -83,15 +89,16 @@ export default function Home() {
           </Grid>
         </Container>
       </section>
+
+      {/* Video section */}
       <Container maxWidth="lg" sx={{ marginTop: 5, marginBottom: 5 }}>
         <div className="videoWrapper">
+          {/* Background video */}
           <video className="videoTag" autoPlay loop muted>
             <source src={sample} type="video/mp4" />
           </video>
         </div>
       </Container>
-
-     
     </main>
   );
 }

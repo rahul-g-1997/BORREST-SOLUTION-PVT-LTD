@@ -1,174 +1,126 @@
-import * as React from "react";
-import PropTypes from "prop-types";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import {
-  AppBar,
-  CssBaseline,
-  Box,
-  Divider,
-  Drawer,
-  IconButton,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  Toolbar,
-  Typography,
-  Button,
-} from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import Logo from "../../assets/images/logo.png";
-import { NavLink } from "react-router-dom"; // Import NavLink component
-import { useSelector } from "react-redux";
+  Menu as MenuIcon,
+  Home as HomeIcon,
+  Info as InfoIcon,
+  ContactPage as ContactIcon,
+  Login as LoginIcon,
+  Widgets as WidgetsIcon,
+  Collections as CollectionsIcon,
+  Article as ArticleIcon,
+  EditRoad as EditRoadIcon,
+} from "@mui/icons-material"; // Importing necessary components and icons
+import Logo from "../../assets/images/logo.png"; // Importing logo image
+import "./DrawerAppBar.css"; // Importing styles
 
-const drawerWidth = 240; // Specify the drawer width here
-const navItems = ["Home", "About", "Article", "Gallery", "Contact", "login"];
-const navLinks = [
-  "/BORREST-SOLUTION-PVT-LTD/",
-  "/BORREST-SOLUTION-PVT-LTD/about",
-  "/BORREST-SOLUTION-PVT-LTD/blogs",
-  "/BORREST-SOLUTION-PVT-LTD/gallery",
-  "/BORREST-SOLUTION-PVT-LTD/contacts",
-  "/BORREST-SOLUTION-PVT-LTD/login",
-]; // Paths for navigation
+export default function DrawerAppBar() {
+  const [showNavbar, setShowNavbar] = useState(false); // State for controlling navbar visibility
+  const [showDropdown, setShowDropdown] = useState(false); // State for controlling dropdown visibility
 
-function DrawerAppBar(props) {
-  const { window } = props;
-
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen((prevState) => !prevState);
+  // Function to toggle navbar visibility
+  const handleShowNavbar = () => {
+    setShowNavbar(!showNavbar);
   };
 
-  const drawer = (
-    <Box
-      onClick={handleDrawerToggle}
-      sx={{ textAlign: "center", width: drawerWidth }}
-    >
-      <img src={Logo} alt={"logo"} loading="logo" width="70px" />
-      <Divider />
-      <List>
-        {navItems.map((item, index) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton
-              component={NavLink} // Use NavLink instead of Link
-              to={navLinks[index]}
-              sx={{ textAlign: "center" }}
-            >
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
+  // Function to handle click on info corner
+  const handleInfoCornerClick = () => {
+    setShowDropdown(!showDropdown);
+  };
 
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
-  const isLogin = useSelector((state) => state.login.isLogin);
-
-  if (isLogin) {
-    return null; // If user is logged in, return null to hide the footer
-  }
   return (
-    <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <AppBar
-        component="nav"
-        position="fixed"
-        sx={{
-          backgroundColor: "#fff",
-          zIndex: (theme) => theme.zIndex.drawer + 1,
-        }}
-      >
-        <Toolbar>
-          <IconButton
-            color="black"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>
-            <img
-              src={Logo}
-              alt={"logo"}
-              loading="logo"
-              style={{ width: "70px", height: "auto" }}
-            />
-            <Typography
-              variant="h6"
-              noWrap
-              sx={{
-                color: "#046f3b",
-                fontSize: {
-                  xs: "1rem", // Define font size for extra small screens (mobile)
-                  sm: "inherit", // Inherit font size for small screens and above
-                },
-                fontFamily: "Carter One, sans-serif",
-              }}
-            >
-              BORREST SOLUTION PVT LTD
-            </Typography>
-          </Box>
-
-          <Box
-            sx={{
-              display: {
-                xs: "none",
-                sm: "flex",
-                justifyContent: "flex-end",
-                alignItems: "center",
-              },
+    <nav className="navbar">
+      <div className="container">
+        {/* Logo */}
+        <div className="logo">
+          <img
+            src={Logo}
+            alt="logo"
+            height="60px"
+            style={{
+              marginRight: "10px",
             }}
-          >
-            {navItems.map((item, index) => (
-              <Button
-                key={item}
-                component={NavLink} // Use NavLink instead of Link
-                to={navLinks[index]}
-                sx={{
-                  color: "#046f3b",
-                  marginLeft: 2,
-                  fontFamily: "Carter One, sans-serif",
-                }}
-              >
-                {item}
-              </Button>
-            ))}
-          </Box>
-        </Toolbar>
-      </AppBar>
-      <nav>
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true,
-          }}
-          sx={{
-            display: { xs: "block", sm: "none" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: drawerWidth, // Apply the specified width to the drawer
-              color: "#046f3b",
-            },
-            fontFamily: "Carter One, sans-serif",
-          }}
-        >
-          {drawer}
-        </Drawer>
-      </nav>
-    </Box>
+          />
+          <span className="logo-name">BORREST SOLUTION PVT LTD</span>
+        </div>
+        {/* Menu icon for mobile */}
+        <div className="menu-icon" onClick={handleShowNavbar}>
+          <MenuIcon
+            style={{ cursor: "pointer", color: "white", fontSize: 40 }}
+          />
+        </div>
+        {/* Navigation elements */}
+        <div className={`nav-elements  ${showNavbar && "active"}`}>
+          <ul>
+            {/* Home link */}
+            <li>
+              <NavLink to="/">
+                <HomeIcon style={{ color: "white", marginRight: "10px" }} />
+                Home
+              </NavLink>
+            </li>
+            {/* Info Corner with dropdown */}
+            <li>
+              <a href="#" onClick={handleInfoCornerClick}>
+                <WidgetsIcon style={{ color: "white", marginRight: "10px" }} />
+                Info Corner
+              </a>
+              {showDropdown && (
+                <ul className="dropdown" style={{ display: "block" }}>
+                  {/* Gallery link */}
+                  <li>
+                    <NavLink to="/gallery">
+                      <CollectionsIcon
+                        style={{ color: "white", marginRight: "10px" }}
+                      />
+                      Gallery
+                    </NavLink>
+                  </li>
+                  {/* Articles link */}
+                  <li>
+                    <NavLink to="/blogs">
+                      <ArticleIcon
+                        style={{ color: "white", marginRight: "10px" }}
+                      />
+                      Articles
+                    </NavLink>
+                  </li>
+                  {/* Procedure link */}
+                  <li>
+                    <NavLink to="/procedure">
+                      <EditRoadIcon
+                        style={{ color: "white", marginRight: "10px" }}
+                      />
+                      Procedure
+                    </NavLink>
+                  </li>
+                </ul>
+              )}
+            </li>
+            {/* About link */}
+            <li>
+              <NavLink to="/about">
+                <InfoIcon style={{ color: "white", marginRight: "10px" }} />
+                About
+              </NavLink>
+            </li>
+            {/* Contacts link */}
+            <li>
+              <NavLink to="/contacts">
+                <ContactIcon style={{ color: "white", marginRight: "10px" }} />
+                contacts
+              </NavLink>
+            </li>
+            {/* Login link */}
+            <li>
+              <NavLink to="/login">
+                <LoginIcon style={{ color: "white", marginRight: "10px" }} />
+                Login
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   );
 }
-
-DrawerAppBar.propTypes = {
-  window: PropTypes.func,
-};
-
-export default DrawerAppBar;

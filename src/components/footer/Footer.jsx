@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux"; // Importing useSelector from react-redux
 import {
   Container,
   Grid,
@@ -7,52 +8,60 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-} from "@mui/material";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import PhoneIcon from "@mui/icons-material/Phone";
-import EmailIcon from "@mui/icons-material/Email";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import Copyright from "../copyright/Copyright";
-import { useSelector } from "react-redux";
+} from "@mui/material"; // Importing MUI components
+import {
+  LocationOn as LocationOnIcon,
+  Phone as PhoneIcon,
+  Email as EmailIcon,
+  Facebook as FacebookIcon,
+  Twitter as TwitterIcon,
+  LinkedIn as LinkedInIcon,
+  Instagram as InstagramIcon,
+} from "@mui/icons-material"; // Importing MUI icons
+import Copyright from "../copyright/Copyright"; // Importing Copyright component
 
 const Footer = () => {
-  const isLogin = useSelector((state) => state.login.isLogin);
+  const isLogin = useSelector((state) => state.login.isLogin); // Using useSelector to get login state from Redux
 
+  // If user is logged in, don't render the footer
   if (isLogin) {
-    return null; // If user is logged in, return null to hide the footer
+    return null;
   }
+
+  // Render footer section
   return (
     <section
       style={{
         padding: "32px 0",
-        minHeight: "100px", // Adjusted minHeight instead of height
+        minHeight: "100px",
         backgroundColor: "#01723c",
         color: "#fff",
       }}
     >
       <Container>
         <Grid container spacing={7}>
+          {/* Contact section */}
           <Grid item md={6} lg={4} style={{ marginBottom: "24px" }}>
             <div>
               <Typography variant="h6" gutterBottom>
                 Contact Us
               </Typography>
               <List disablePadding>
+                {/* Location */}
                 <ListItem disableGutters>
                   <ListItemIcon>
                     <LocationOnIcon style={{ color: "#fff" }} />
                   </ListItemIcon>
                   <ListItemText primary="Kurukshetra" />
                 </ListItem>
+                {/* Phone */}
                 <ListItem disableGutters>
                   <ListItemIcon>
                     <PhoneIcon style={{ color: "#fff" }} />
                   </ListItemIcon>
                   <ListItemText primary="+91-9896810237" />
                 </ListItem>
+                {/* Email */}
                 <ListItem disableGutters>
                   <ListItemIcon>
                     <EmailIcon style={{ color: "#fff" }} />
@@ -61,6 +70,7 @@ const Footer = () => {
                 </ListItem>
               </List>
             </div>
+            {/* Social media icons */}
             <div>
               <Typography variant="h6" gutterBottom mt={2}>
                 Social
@@ -79,6 +89,7 @@ const Footer = () => {
               </IconButton>
             </div>
           </Grid>
+          {/* Info section */}
           <Grid item md={6} lg={4} style={{ marginBottom: "24px" }}>
             <div>
               <Typography variant="h6" gutterBottom>
@@ -91,12 +102,14 @@ const Footer = () => {
               </Typography>
             </div>
           </Grid>
+          {/* Links section */}
           <Grid item md={6} lg={4} style={{ marginBottom: "24px" }}>
             <div>
               <Typography variant="h6" gutterBottom>
                 Links
               </Typography>
               <List disablePadding>
+                {/* Home */}
                 <ListItem disableGutters>
                   <ListItemText
                     primary={
@@ -114,6 +127,7 @@ const Footer = () => {
                     }
                   />
                 </ListItem>
+                {/* About */}
                 <ListItem disableGutters>
                   <ListItemText
                     primary={
@@ -131,6 +145,7 @@ const Footer = () => {
                     }
                   />
                 </ListItem>
+                {/* Contact */}
                 <ListItem disableGutters>
                   <ListItemText
                     primary={
@@ -153,6 +168,7 @@ const Footer = () => {
           </Grid>
         </Grid>
       </Container>
+      {/* Copyright */}
       <Copyright />
     </section>
   );

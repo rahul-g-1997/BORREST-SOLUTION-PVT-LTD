@@ -34,7 +34,8 @@ const Blogs = () => {
   }, []);
 
   return (
-    <Container maxWidth="lg" sx={{ marginTop: 11, marginBottom: 5 }}>
+    <Container maxWidth="lg" sx={{ marginBottom: 5 }}>
+      {/* Title */}
       <Typography
         sx={{
           color: "#046f3b",
@@ -43,11 +44,13 @@ const Blogs = () => {
         variant="h4"
         align="center"
         gutterBottom
-        margin={7}
+        paddingTop={11}
       >
         Articles
       </Typography>
-      <Box mt={4} p={isSmallScreen ? 2 : 4}>
+
+      {/* Display blogs */}
+      <Box mt={4}>
         {error ? (
           <Typography variant="body1" color="error" align="center">
             {error}
@@ -55,24 +58,39 @@ const Blogs = () => {
         ) : (
           <Grid container spacing={isSmallScreen ? 2 : 4}>
             {blogs.map((blog) => (
-              <Grid key={blog.id} item xs={12} sm={6} md={4}>
-                <Card sx={{ height: "100%" }}>
-                  <CardActionArea>
-                    <CardMedia
-                      component="img"
-                      height="200"
-                      image={`http://127.0.0.1:8000/images/${blog.image}`} // Assuming image URL is correct
-                      alt={blog.title}
-                    />
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">
-                        {blog.title}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {blog.description}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
+              <Grid key={blog.id} item xs={12}>
+                <Card
+                  sx={{
+                    width: "100%",
+                    display: "flex",
+                    flexDirection: isSmallScreen ? "column" : "row",
+                  }}
+                >
+                  {/* Image */}
+                  <CardMedia
+                    component="img"
+                    height="200"
+                    image={`http://127.0.0.1:8000/images/${blog.image}`} // Assuming image URL is correct
+                    alt={blog.title}
+                    sx={{ maxWidth: isSmallScreen ? "100%" : "200px" }}
+                  />
+
+                  {/* Content */}
+                  <Box flexGrow={1}>
+                    <CardActionArea>
+                      <CardContent>
+                        {/* Title */}
+                        <Typography gutterBottom variant="h5" component="div">
+                          {blog.title}
+                        </Typography>
+
+                        {/* Description */}
+                        <Typography variant="body2" color="text.secondary">
+                          {blog.description}
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Box>
                 </Card>
               </Grid>
             ))}

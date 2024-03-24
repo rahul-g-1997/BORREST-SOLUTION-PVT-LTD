@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import store from "../../rtk/store";
 import {
   Avatar,
   Button,
@@ -37,7 +36,7 @@ export default function LoginPage() {
     password: "",
   });
 
-  const [loginError, setLoginError] = useState(false); // State to track login error
+  const [loginError, setLoginError] = useState(false); 
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -46,13 +45,11 @@ export default function LoginPage() {
     if (email === "admin" && password === "admin") {
       dispatch(toggleLogin());
       setFormData({ email: "", password: "" });
-      navigate("/BORREST-SOLUTION-PVT-LTD/dashboard");
+      navigate("/dashboard");
     } else {
       setLoginError(true); // Set login error to true if login fails
       setFormData({ email: "", password: "" });
     }
-
-    console.log(store.getState());
   };
 
   const handleInputChange = (event) => {
@@ -65,7 +62,7 @@ export default function LoginPage() {
 
   return (
     <ThemeProvider theme={customTheme}>
-      <Grid container component="main" sx={{ height: "100vh", mt: 7 }}>
+      <Grid container component="main" sx={{ height: "100vh", pt: 7 }}>
         <CssBaseline />
         <Grid
           item

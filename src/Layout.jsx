@@ -3,14 +3,17 @@ import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import { FloatingWhatsApp } from "react-floating-whatsapp";
 import { DrawerAppBar, Footer } from "./components";
+import { useSelector } from "react-redux";
 import avatar from "./assets/images/WhatsApplogo.jpeg";
 
 const Layout = () => {
+  const isLogin = useSelector((state) => state.login.isLogin);
+
   return (
     <div>
       <Container style={{ margin: 0, padding: 0 }}>
         <Box style={{ width: "100vw" }}>
-          <DrawerAppBar />
+          {!isLogin && <DrawerAppBar />}
           <Outlet />
           <Footer />
         </Box>
