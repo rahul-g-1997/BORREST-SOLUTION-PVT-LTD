@@ -5,7 +5,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 import App from "./App";
 import theme from "./theme";
-import { About, ContactPage, Dashboard, Error, Home, LoginPage, Blogs, Gallery} from "./pages";
+import { About, ContactPage, Dashboard, Error, Home, LoginPage, Blogs, Gallery, Procedure} from "./pages";
 
 import {
   createRoutesFromElements,
@@ -21,11 +21,7 @@ const root = createRoot(rootElement);
 // Create browser router and routes
 const route = createBrowserRouter(
   createRoutesFromElements(
-    <Route
-      path="/"
-      element={<App />}
-      errorElement={<Error />}
-    >
+    <Route path="/" element={<App />} errorElement={<Error />}>
       <Route index element={<Home />} />
       <Route path="contacts" element={<ContactPage />} />
       <Route path="about" element={<About />} />
@@ -33,6 +29,7 @@ const route = createBrowserRouter(
       <Route path="dashboard" element={<Dashboard />} />
       <Route path="gallery" element={<Gallery />} />
       <Route path="blogs" element={<Blogs />} />
+      <Route path="/procedure" element={<Procedure />} />
     </Route>
   )
 );

@@ -7,3 +7,4 @@ export { default as LoginPage } from "./login/LoginPage";
 export { default as Dashboard } from "./dashboard/Dashboard";
 export { default as Blogs } from "./blogs/Blogs";
 export { default as Gallery } from "./Gallery/Gallery";
+export { default as Procedure } from "./procedure/Procedure";

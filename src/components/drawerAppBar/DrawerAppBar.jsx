@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import {
   Menu as MenuIcon,
@@ -17,6 +17,7 @@ import "./DrawerAppBar.css"; // Importing styles
 export default function DrawerAppBar() {
   const [showNavbar, setShowNavbar] = useState(false); // State for controlling navbar visibility
   const [showDropdown, setShowDropdown] = useState(false); // State for controlling dropdown visibility
+  const dropdownRef = useRef(null); // Reference to the dropdown element
 
   // Function to toggle navbar visibility
   const handleShowNavbar = () => {
@@ -27,6 +28,22 @@ export default function DrawerAppBar() {
   const handleInfoCornerClick = () => {
     setShowDropdown(!showDropdown);
   };
+
+  // Function to handle click outside the dropdown
+  const handleClickOutsideDropdown = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setShowDropdown(false);
+    }
+  };
+
+  useEffect(() => {
+    // Add event listener when component mounts
+    document.addEventListener("mousedown", handleClickOutsideDropdown);
+    // Remove event listener when component unmounts
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutsideDropdown);
+    };
+  }, []); // Run only once when component mounts
 
   return (
     <nav className="navbar">
@@ -60,7 +77,7 @@ export default function DrawerAppBar() {
               </NavLink>
             </li>
             {/* Info Corner with dropdown */}
-            <li>
+            <li ref={dropdownRef}>
               <a href="#" onClick={handleInfoCornerClick}>
                 <WidgetsIcon style={{ color: "white", marginRight: "10px" }} />
                 Info Corner
