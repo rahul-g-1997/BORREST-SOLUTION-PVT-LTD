@@ -19,37 +19,37 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 
 const BlogsUpload = () => {
-  const [blogs, setBlogs] = useState([]);
-  const [newBlog, setNewBlog] = useState({
+  const [data, setData] = useState([]);
+  const [newData, setNewData] = useState({
     title: "",
     description: "",
     image: null,
     category: "", // Add category field
   });
 
-  useEffect(() => {
-    fetchBlogs();
-  }, []);
-
-  const fetchBlogs = async () => {
+  const fetchData = async () => {
     try {
       const response = await axios.get("http://127.0.0.1:8000/api/get_blog");
-      setBlogs(response.data);
+      setData(response.data);
     } catch (error) {
       console.error("Error fetching blogs:", error);
     }
   };
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setNewBlog((prevBlog) => ({
+    setNewData((prevBlog) => ({
       ...prevBlog,
       [name]: value,
     }));
   };
 
   const handleImageChange = (event) => {
-    setNewBlog((prevBlog) => ({
+    setNewData((prevBlog) => ({
       ...prevBlog,
       image: event.target.files[0],
     }));
@@ -58,10 +58,10 @@ const BlogsUpload = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("title", newBlog.title);
-    formData.append("description", newBlog.description);
-    formData.append("image", newBlog.image);
-    formData.append("category", newBlog.category); // Add category to FormData
+    formData.append("title", newData.title);
+    formData.append("description", newData.description);
+    formData.append("image", newData.image);
+    formData.append("category", newData.category);
 
     try {
       const response = await axios.post(
@@ -74,13 +74,13 @@ const BlogsUpload = () => {
         }
       );
       if (response.status === 200) {
-        setNewBlog({
+        setNewData({
           title: "",
           description: "",
           image: null,
           category: "", // Reset category after submission
         });
-        fetchBlogs();
+        fetchData();
       }
     } catch (error) {
       console.error("Error adding blog:", error);
@@ -93,7 +93,7 @@ const BlogsUpload = () => {
         `http://127.0.0.1:8000/api/delete_blog/${blogId}`
       );
       if (response.status === 200) {
-        fetchBlogs();
+        fetchData();
       }
     } catch (error) {
       console.error("Error deleting blog:", error);
@@ -109,9 +109,9 @@ const BlogsUpload = () => {
         marginTop={7}
         sx={{ color: "#046f3b", fontFamily: "Carter One, sans-serif" }}
       >
-        Articles
+        Upload
       </Typography>
-      <Box mt={4}>
+      <Box mt={1}>
         <Grid container spacing={4}>
           {/* New Blog Form */}
           <Grid item xs={12}>
@@ -121,7 +121,7 @@ const BlogsUpload = () => {
                 fullWidth
                 labelId="category-label"
                 name="category"
-                value={newBlog.category}
+                value={newData.category}
                 onChange={handleInputChange}
                 variant="outlined"
                 margin="normal"
@@ -134,7 +134,7 @@ const BlogsUpload = () => {
                 fullWidth
                 label="Title"
                 name="title"
-                value={newBlog.title}
+                value={newData.title}
                 onChange={handleInputChange}
                 variant="outlined"
                 margin="normal"
@@ -145,7 +145,7 @@ const BlogsUpload = () => {
                 rows={4}
                 label="Description"
                 name="description"
-                value={newBlog.description}
+                value={newData.description}
                 onChange={handleInputChange}
                 variant="outlined"
                 margin="normal"
@@ -162,7 +162,7 @@ const BlogsUpload = () => {
                   Upload Image
                 </Button>
               </label>
-              {newBlog.image && <Typography>{newBlog.image.name}</Typography>}
+              {newData.image && <Typography>{newData.image.name}</Typography>}
               <Button
                 variant="contained"
                 color="primary"
@@ -174,32 +174,35 @@ const BlogsUpload = () => {
             </form>
           </Grid>
           {/* Display Existing Blogs */}
-          {blogs.map((blog) => (
-            <Grid key={blog.id} item xs={12} sm={6} md={4}>
+          {data.map((data) => (
+            <Grid key={data.id} item xs={12} sm={6} md={4}>
               <Card sx={{ position: "relative" }}>
                 <CardActionArea>
+                  <Typography variant="body2" color="text.secondary">
+                    {data.category}
+                  </Typography>
                   <CardMedia
                     component="img"
                     height="200"
-                    image={`http://127.0.0.1:8000/images/${blog.image}`} // Assuming image URL is correct
-                    alt={blog.title}
+                    image={`http://127.0.0.1:8000/images/${data.image}`} // Assuming image URL is correct
+                    alt={data.title}
                   />
                   <CardContent>
                     <Typography variant="h6" gutterBottom>
-                      {blog.title}
+                      {data.title}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      {blog.description}
+                      {data.description}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
                 <IconButton
                   aria-label="delete"
-                  onClick={() => handleDelete(blog.id)}
+                  onClick={() => handleDelete(data.id)}
                   sx={{
                     position: "absolute",
-                    top: 0,
-                    right: 0,
+                    bottom:5,
+                    right: 5,
                     color: "error",
                   }}
                 >

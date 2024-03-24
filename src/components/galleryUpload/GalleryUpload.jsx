@@ -169,7 +169,7 @@ const GalleryUpload = () => {
                 onClick={() => handleDelete(image.id)}
                 sx={{
                   position: "absolute",
-                  top: 5,
+                  bottom: 5,
                   right: 5,
                   color: "error",
                 }}

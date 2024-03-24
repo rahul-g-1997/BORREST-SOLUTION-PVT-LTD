@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { TypeAnimation } from "react-type-animation";
 import { Container, Typography, Grid } from "@mui/material";
-import { ResponsiveCard } from "../../components"; // Importing components
+import { ImageSlider, ResponsiveCard } from "../../components"; // Importing components
 import cardsData from "../../data/cardsData"; // Importing data
 import sample from "../../assets/video/bgvideo.mp4"; // Importing video file
 import undraw_developer_activity_img from "../../assets/images/undraw_developer_activity.svg"; // Importing image file
@@ -53,6 +53,10 @@ export default function Home() {
             alt="right-hero"
           />
         </div>
+      </section>
+      <section>
+
+        <ImageSlider/>
       </section>
 
       {/* Projects section */}
