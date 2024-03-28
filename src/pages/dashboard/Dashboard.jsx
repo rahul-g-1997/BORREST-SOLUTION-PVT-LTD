@@ -28,6 +28,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import CollectionsIcon from "@mui/icons-material/Collections";
 import { BlogsUpload, Enquiry, GalleryUpload } from "../../components";
 import { useState } from "react";
+import style from "./dashboard.module.css";
 
 function Copyright(props) {
   const navigate = useNavigate();
@@ -230,11 +231,22 @@ export default function Dashboard() {
           }}
         >
           <Toolbar />
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            {showBlogsUpload && <BlogsUpload />}
-            {showGalleryUpload && <GalleryUpload />}
-            {showEnquiry && <Enquiry />}
-            <Copyright sx={{ pt: 4 }} />
+          <Container
+            maxWidth="xl"
+            sx={{
+              p: "20px",
+              width: "auto",
+              transition: "margin-left 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms",
+            }}
+          >
+          
+            <div className={style.container}>
+           
+              {showBlogsUpload && <BlogsUpload />}
+              {showGalleryUpload && <GalleryUpload />}
+              {showEnquiry && <Enquiry />}
+              <Copyright sx={{ pt: 4 }} />
+            </div>
           </Container>
         </Box>
       </Box>
