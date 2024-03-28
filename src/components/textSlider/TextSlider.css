@@ -1,0 +1,20 @@
+.text-roll-container {
+    overflow: hidden;
+    width: 100%;
+}
+
+.text-roll {
+    white-space: nowrap;
+    display: inline-block;
+    animation: roll infinite linear;
+}
+
+@keyframes roll {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}

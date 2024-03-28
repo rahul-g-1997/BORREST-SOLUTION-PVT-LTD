@@ -1,0 +1,10 @@
+/* Add this CSS to your project's stylesheet */
+.slick-slide {
+    padding: 0 5px;
+    /* Adjust the padding as needed */
+}
+
+.slick-slide img {
+    width: 100%;
+    height: auto;
+}

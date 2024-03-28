@@ -201,7 +201,7 @@ const BlogsUpload = () => {
                   onClick={() => handleDelete(data.id)}
                   sx={{
                     position: "absolute",
-                    bottom:5,
+                    bottom: 5,
                     right: 5,
                     color: "error",
                   }}

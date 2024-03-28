@@ -3,7 +3,6 @@ import { TypeAnimation } from "react-type-animation";
 import { Container, Typography, Grid } from "@mui/material";
 import { ImageSlider, ResponsiveCard } from "../../components"; // Importing components
 import cardsData from "../../data/cardsData"; // Importing data
-import sample from "../../assets/video/bgvideo.mp4"; // Importing video file
 import undraw_developer_activity_img from "../../assets/images/undraw_developer_activity.svg"; // Importing image file
 import "./home.css"; // Importing styles
 
@@ -54,11 +53,8 @@ export default function Home() {
           />
         </div>
       </section>
-      <section>
-
-        <ImageSlider/>
-      </section>
-
+      {/* <TextSlider /> */}
+      <ImageSlider />
       {/* Projects section */}
       <section className="projects" id="project__section">
         <Container sx={{ mt: -7 }}>
@@ -93,16 +89,6 @@ export default function Home() {
           </Grid>
         </Container>
       </section>
-
-      {/* Video section */}
-      <Container maxWidth="lg" sx={{ marginTop: 5, marginBottom: 5 }}>
-        <div className="videoWrapper">
-          {/* Background video */}
-          <video className="videoTag" autoPlay loop muted>
-            <source src={sample} type="video/mp4" />
-          </video>
-        </div>
-      </Container>
     </main>
   );
 }

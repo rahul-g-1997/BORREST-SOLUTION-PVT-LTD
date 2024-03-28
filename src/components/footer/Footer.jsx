@@ -15,7 +15,6 @@ import {
   Email as EmailIcon,
   Facebook as FacebookIcon,
   Twitter as TwitterIcon,
-  LinkedIn as LinkedInIcon,
   Instagram as InstagramIcon,
 } from "@mui/icons-material"; // Importing MUI icons
 import Copyright from "../copyright/Copyright"; // Importing Copyright component
@@ -75,16 +74,22 @@ const Footer = () => {
               <Typography variant="h6" gutterBottom mt={2}>
                 Social
               </Typography>
-              <IconButton href="#" style={{ color: "#fff" }}>
+              <IconButton
+                href="https://www.facebook.com/vinod.bhatia.1804"
+                style={{ color: "#fff" }}
+              >
                 <FacebookIcon />
               </IconButton>
-              <IconButton href="#" style={{ color: "#fff" }}>
+              <IconButton
+                href="https://twitter.com/ppsv1230?s=20"
+                style={{ color: "#fff" }}
+              >
                 <TwitterIcon />
               </IconButton>
-              <IconButton href="#" style={{ color: "#fff" }}>
-                <LinkedInIcon />
-              </IconButton>
-              <IconButton href="#" style={{ color: "#fff" }}>
+              <IconButton
+                href="https://www.instagram.com/vinodbhatia8372/"
+                style={{ color: "#fff" }}
+              >
                 <InstagramIcon />
               </IconButton>
             </div>
@@ -115,7 +120,7 @@ const Footer = () => {
                     primary={
                       <Typography
                         component="a"
-                        href="index.html"
+                        href="/"
                         style={{
                           color: "#fff",
                           textDecoration: "none",
@@ -133,7 +138,61 @@ const Footer = () => {
                     primary={
                       <Typography
                         component="a"
-                        href="about.html"
+                        href="/gallery"
+                        style={{
+                          color: "#fff",
+                          textDecoration: "none",
+                          cursor: "pointer",
+                        }}
+                      >
+                        Gallery
+                      </Typography>
+                    }
+                  />
+                </ListItem>
+                {/* About */}
+                <ListItem disableGutters>
+                  <ListItemText
+                    primary={
+                      <Typography
+                        component="a"
+                        href="/blogs"
+                        style={{
+                          color: "#fff",
+                          textDecoration: "none",
+                          cursor: "pointer",
+                        }}
+                      >
+                        blogs
+                      </Typography>
+                    }
+                  />
+                </ListItem>
+                {/* About */}
+                <ListItem disableGutters>
+                  <ListItemText
+                    primary={
+                      <Typography
+                        component="a"
+                        href="/procedure"
+                        style={{
+                          color: "#fff",
+                          textDecoration: "none",
+                          cursor: "pointer",
+                        }}
+                      >
+                        Procedure
+                      </Typography>
+                    }
+                  />
+                </ListItem>
+                {/* About */}
+                <ListItem disableGutters>
+                  <ListItemText
+                    primary={
+                      <Typography
+                        component="a"
+                        href="/about"
                         style={{
                           color: "#fff",
                           textDecoration: "none",
@@ -151,7 +210,7 @@ const Footer = () => {
                     primary={
                       <Typography
                         component="a"
-                        href="service.html"
+                        href="/contacts"
                         style={{
                           color: "#fff",
                           textDecoration: "none",
@@ -159,6 +218,24 @@ const Footer = () => {
                         }}
                       >
                         Contact
+                      </Typography>
+                    }
+                  />
+                </ListItem>
+                {/* About */}
+                <ListItem disableGutters>
+                  <ListItemText
+                    primary={
+                      <Typography
+                        component="a"
+                        href="/login"
+                        style={{
+                          color: "#fff",
+                          textDecoration: "none",
+                          cursor: "pointer",
+                        }}
+                      >
+                        Login
                       </Typography>
                     }
                   />

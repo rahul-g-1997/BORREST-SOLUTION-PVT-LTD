@@ -7,4 +7,5 @@ export { default as Counter } from "./counter/Counter";
 export { default as Enquiry } from "./enquiry/Enquiry";
 export { default as GalleryUpload } from "./galleryUpload/GalleryUpload";
 export { default as BlogsUpload } from "./blogsUpload/BlogsUpload";
-export { default as ImageSlider} from "./imageSlider/ImageSlider";
+export { default as ImageSlider } from "./imageSlider/ImageSlider";
+export { default as TextSlider } from "./textSlider/TextSlider";
