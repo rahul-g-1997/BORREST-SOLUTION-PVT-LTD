@@ -239,9 +239,7 @@ export default function Dashboard() {
               transition: "margin-left 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms",
             }}
           >
-          
             <div className={style.container}>
-           
               {showBlogsUpload && <BlogsUpload />}
               {showGalleryUpload && <GalleryUpload />}
               {showEnquiry && <Enquiry />}

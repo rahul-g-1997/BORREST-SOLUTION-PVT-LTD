@@ -36,7 +36,7 @@ export default function Home() {
           </h1>
           {/* Social links */}
           <div className="soclinks">
-            <NavLink to="/BORREST-SOLUTION-PVT-LTD/contacts">
+            <NavLink to="/contacts">
               <button className="btn" type="button">
                 Contact Me!
               </button>
