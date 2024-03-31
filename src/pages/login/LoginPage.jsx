@@ -19,7 +19,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { toggleLogin } from "../../rtk/reducer/loginReducer";
 
-
+// Create a custom MUI theme
 const customTheme = createTheme({
   palette: {
     primary: {
@@ -32,27 +32,31 @@ export default function LoginPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // State variables for form data and login error
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+  const [loginError, setLoginError] = useState(false);
 
-  const [loginError, setLoginError] = useState(false); 
-
+  // Function to handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
     const { email, password } = formData;
 
+    // Check if email and password match admin credentials
     if (email === "admin" && password === "admin") {
+      // Dispatch Redux action to toggle login status
       dispatch(toggleLogin());
-      setFormData({ email: "", password: "" });
-      navigate("/dashboard");
+      setFormData({ email: "", password: "" }); // Clear form data
+      navigate("/dashboard"); // Redirect to dashboard page
     } else {
       setLoginError(true); // Set login error to true if login fails
-      setFormData({ email: "", password: "" });
+      setFormData({ email: "", password: "" }); // Clear form data
     }
   };
 
+  // Function to handle input change in form fields
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -104,6 +108,7 @@ export default function LoginPage() {
               onSubmit={handleSubmit}
               sx={{ mt: 1 }}
             >
+              {/* Email and password input fields */}
               <TextField
                 margin="normal"
                 required
@@ -128,10 +133,12 @@ export default function LoginPage() {
                 value={formData.password}
                 onChange={handleInputChange}
               />
+              {/* Remember me checkbox */}
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
               />
+              {/* Sign in button */}
               <Button
                 type="submit"
                 fullWidth
@@ -140,11 +147,13 @@ export default function LoginPage() {
               >
                 Sign In
               </Button>
-              {loginError && ( // Render Alert component if login error is true
+              {/* Display login error message if loginError is true */}
+              {loginError && (
                 <Alert variant="filled" severity="error" sx={{ mb: 2 }}>
                   Incorrect email or password.
                 </Alert>
               )}
+              {/* Links for forgot password and sign up */}
               <Grid container>
                 <Grid item xs>
                   <Link href="#" variant="body2">

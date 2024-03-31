@@ -10,9 +10,12 @@ import {
   Typography,
 } from "@mui/material";
 
+// Enquiry Component
 const Enquiry = () => {
+  // State to store the list of enquiries
   const [enquiries, setEnquiries] = useState([]);
 
+  // Fetch enquiries from the server when the component mounts
   useEffect(() => {
     const fetchEnquiries = async () => {
       try {
@@ -27,6 +30,7 @@ const Enquiry = () => {
     fetchEnquiries();
   }, []);
 
+  // Function to handle enquiry deletion
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://127.0.0.1:8000/api/enquiries/${id}`);
@@ -40,8 +44,10 @@ const Enquiry = () => {
     }
   };
 
+  // Render the component
   return (
     <div>
+      {/* Heading */}
       <Typography
         sx={{
           color: "#046f3b",
@@ -55,6 +61,7 @@ const Enquiry = () => {
         Enquiries
       </Typography>
 
+      {/* Display enquiries in a table */}
       {enquiries.length > 0 ? (
         <Table>
           <TableHead>
@@ -74,6 +81,7 @@ const Enquiry = () => {
                 <TableCell>{enquiry.contact}</TableCell>
                 <TableCell>{enquiry.message}</TableCell>
                 <TableCell>
+                  {/* Delete button for each enquiry */}
                   <Button
                     onClick={() => handleDelete(enquiry.id)}
                     variant="contained"
@@ -87,6 +95,7 @@ const Enquiry = () => {
           </TableBody>
         </Table>
       ) : (
+        // Message displayed when there are no enquiries
         <Typography variant="body1">No enquiries found.</Typography>
       )}
     </div>

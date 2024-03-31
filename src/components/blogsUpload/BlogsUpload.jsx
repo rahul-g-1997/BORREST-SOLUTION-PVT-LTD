@@ -18,7 +18,9 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
+// BlogsUpload Component
 const BlogsUpload = () => {
+  // State variables for managing component state
   const [data, setData] = useState([]);
   const [newData, setNewData] = useState({
     title: "",
@@ -27,6 +29,7 @@ const BlogsUpload = () => {
     category: "", // Add category field
   });
 
+  // Fetch blog data from the server
   const fetchData = async () => {
     try {
       const response = await axios.get("http://127.0.0.1:8000/api/get_blog");
@@ -36,10 +39,12 @@ const BlogsUpload = () => {
     }
   };
 
+  // Fetch blog data when the component mounts
   useEffect(() => {
     fetchData();
   }, []);
 
+  // Handle input change for form fields
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setNewData((prevBlog) => ({
@@ -48,6 +53,7 @@ const BlogsUpload = () => {
     }));
   };
 
+  // Handle image file selection
   const handleImageChange = (event) => {
     setNewData((prevBlog) => ({
       ...prevBlog,
@@ -55,6 +61,7 @@ const BlogsUpload = () => {
     }));
   };
 
+  // Handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -87,6 +94,7 @@ const BlogsUpload = () => {
     }
   };
 
+  // Handle deletion of a blog
   const handleDelete = async (blogId) => {
     try {
       const response = await axios.delete(
@@ -100,8 +108,10 @@ const BlogsUpload = () => {
     }
   };
 
+  // Render the component
   return (
     <Container maxWidth="lg" sx={{ marginBottom: 5 }}>
+      {/* Page Title */}
       <Typography
         variant="h4"
         align="center"
@@ -196,6 +206,7 @@ const BlogsUpload = () => {
                     </Typography>
                   </CardContent>
                 </CardActionArea>
+                {/* Delete button */}
                 <IconButton
                   aria-label="delete"
                   onClick={() => handleDelete(data.id)}

@@ -13,10 +13,12 @@ import {
 } from "@mui/material";
 
 const Gallery = () => {
-  const [open, setOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [images, setImages] = useState([]);
+  // State variables for managing modal and image data
+  const [open, setOpen] = useState(false); // Modal open/close state
+  const [selectedImage, setSelectedImage] = useState(null); // Currently selected image
+  const [images, setImages] = useState([]); // Array of images fetched from API
 
+  // Fetch images from API on component mount
   useEffect(() => {
     const fetchImages = async () => {
       try {
@@ -38,17 +40,20 @@ const Gallery = () => {
     fetchImages();
   }, []);
 
+  // Event handler to open modal and set selected image
   const handleOpen = (image) => {
     setSelectedImage(image);
     setOpen(true);
   };
 
+  // Event handler to close modal
   const handleClose = () => {
     setOpen(false);
   };
 
   return (
     <Container maxWidth="lg" sx={{ marginBottom: 5 }}>
+      {/* Gallery title */}
       <Typography
         sx={{
           color: "#046f3b",
@@ -61,17 +66,21 @@ const Gallery = () => {
       >
         Gallery
       </Typography>
+      {/* Grid layout for displaying images */}
       <Grid container spacing={2}>
         {images.map((image, index) => (
           <Grid key={index} item xs={6} sm={4} md={3}>
+            {/* Card for each image */}
             <Card>
               <CardActionArea onClick={() => handleOpen(image)}>
+                {/* Image displayed as card media */}
                 <CardMedia
                   component="img"
                   height="200"
                   image={image.url}
                   alt={image.title}
                 />
+                {/* Image title displayed below the image */}
                 <Typography variant="subtitle1" align="center">
                   {image.title}
                 </Typography>
@@ -80,6 +89,7 @@ const Gallery = () => {
           </Grid>
         ))}
       </Grid>
+      {/* Modal for displaying full-size image */}
       <Modal
         open={open}
         onClose={handleClose}
@@ -101,6 +111,7 @@ const Gallery = () => {
               padding: 20,
             }}
           >
+            {/* Title and full-size image displayed inside the modal */}
             <Typography variant="h5" mb={2}>
               {selectedImage && selectedImage.title}
             </Typography>

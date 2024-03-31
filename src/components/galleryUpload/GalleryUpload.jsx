@@ -16,7 +16,9 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
+// GalleryUpload Component
 const GalleryUpload = () => {
+  // State variables for managing component state
   const [open, setOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [images, setImages] = useState([]);
@@ -24,10 +26,12 @@ const GalleryUpload = () => {
   const [file, setFile] = useState(null);
   const fileInputRef = useRef(null);
 
+  // Fetch images from the server when the component mounts
   useEffect(() => {
     fetchImages();
   }, []);
 
+  // Fetch images from the server
   const fetchImages = async () => {
     try {
       const response = await axios.get("http://127.0.0.1:8000/api/get_gallery");
@@ -42,23 +46,28 @@ const GalleryUpload = () => {
     }
   };
 
+  // Open modal and set selected image
   const handleOpen = (image) => {
     setSelectedImage(image);
     setOpen(true);
   };
 
+  // Close modal
   const handleClose = () => {
     setOpen(false);
   };
 
+  // Handle input change for title field
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
   };
 
+  // Handle file selection
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
   };
 
+  // Handle image deletion
   const handleDelete = async (id) => {
     try {
       const response = await axios.delete(
@@ -72,6 +81,7 @@ const GalleryUpload = () => {
     }
   };
 
+  // Upload photo to the server
   const uploadPhoto = async () => {
     const formData = new FormData();
     formData.append("title", title);
@@ -99,8 +109,10 @@ const GalleryUpload = () => {
     }
   };
 
+  // Render the component
   return (
     <Container maxWidth="lg" sx={{ marginBottom: 5 }}>
+      {/* Header */}
       <div
         style={{
           display: "flex",
@@ -121,6 +133,7 @@ const GalleryUpload = () => {
           >
             Gallery
           </Typography>
+          {/* Image upload form */}
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <TextField
               label="Title"
@@ -149,6 +162,7 @@ const GalleryUpload = () => {
         </Container>
       </div>
 
+      {/* Image grid */}
       <Grid container spacing={2}>
         {[...images].reverse().map((image, index) => (
           <Grid key={index} item xs={6} sm={4} md={3}>
@@ -161,9 +175,10 @@ const GalleryUpload = () => {
                   alt={image.title}
                 />
                 <Typography variant="subtitle1" align="center">
-                  {image.title} {console.log(image.url)}
+                  {image.title}
                 </Typography>
               </CardActionArea>
+              {/* Delete button */}
               <IconButton
                 aria-label="delete"
                 onClick={() => handleDelete(image.id)}
@@ -180,6 +195,8 @@ const GalleryUpload = () => {
           </Grid>
         ))}
       </Grid>
+
+      {/* Image modal */}
       <Modal
         open={open}
         onClose={handleClose}

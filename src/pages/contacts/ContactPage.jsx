@@ -15,9 +15,12 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import { createTheme } from "@mui/material/styles";
 import axios from "axios"; // Import axios
 
+// ContactPage component
 const ContactPage = () => {
+  // Ref for accessing form elements
   const form = useRef();
 
+  // State to manage form data
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -25,16 +28,18 @@ const ContactPage = () => {
     message: "",
   });
 
+  // Function to handle changes in form inputs
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // Send email
+      // Send email using emailjs
       const emailResult = await emailjs.sendForm(
         "service_l9krszx",
         "template_e73ritz",
@@ -43,7 +48,7 @@ const ContactPage = () => {
       );
       console.log("Email sent successfully:", emailResult.text);
 
-      // Send form data to backend
+      // Send form data to backend using axios
       const backendResult = await axios.post(
         "http://127.0.0.1:8000/api/store-enquiry",
         {
@@ -51,7 +56,7 @@ const ContactPage = () => {
           email: formData.email,
           message: formData.message,
           contact: formData.contactNumber,
-          date: new Date().toISOString().slice(0, 10), // Assuming you want the current date
+          date: new Date().toISOString().slice(0, 10), // Current date
         }
       );
       console.log(
@@ -71,6 +76,7 @@ const ContactPage = () => {
     }
   };
 
+  // Custom MUI theme
   const customTheme = createTheme({
     palette: {
       primary: {
@@ -81,8 +87,9 @@ const ContactPage = () => {
 
   return (
     <ThemeProvider theme={customTheme}>
-      <Container maxWidth="md" >
+      <Container maxWidth="md">
         <Grid paddingTop={7} paddingBottom={7}>
+          {/* Contact Us heading */}
           <Typography
             sx={{
               color: "#046f3b",
@@ -96,6 +103,7 @@ const ContactPage = () => {
             Contact Us
           </Typography>
           <Grid container spacing={4}>
+            {/* Contact information section */}
             <Grid
               item
               xs={12}
@@ -106,6 +114,7 @@ const ContactPage = () => {
                 boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)",
               }}
             >
+              {/* Location */}
               <Grid
                 padding={3}
                 m={3}
@@ -124,6 +133,7 @@ const ContactPage = () => {
                   Kurukshetra
                 </Typography>
               </Grid>
+              {/* Email */}
               <Grid
                 padding={3}
                 m={3}
@@ -140,6 +150,7 @@ const ContactPage = () => {
                   borrestsolutions@gmail.com
                 </Typography>
               </Grid>
+              {/* Phone */}
               <Grid
                 padding={3}
                 m={3}
@@ -157,12 +168,14 @@ const ContactPage = () => {
                 </Typography>
               </Grid>
             </Grid>
-            <Grid item xs={12} md={6} >
+            {/* Contact form section */}
+            <Grid item xs={12} md={6}>
               <Typography>
                 Reach out to us with any questions, feedback, or inquiries you
                 may have. Simply fill out the form below, and we&apos;ll be in
                 touch shortly.
               </Typography>
+              {/* Form */}
               <Box
                 component="form"
                 onSubmit={handleSubmit}
@@ -174,6 +187,7 @@ const ContactPage = () => {
                   gap: "1rem",
                 }}
               >
+                {/* Name */}
                 <TextField
                   label="Name"
                   variant="outlined"
@@ -183,6 +197,7 @@ const ContactPage = () => {
                   onChange={handleChange}
                   required
                 />
+                {/* Email */}
                 <TextField
                   label="Email"
                   variant="outlined"
@@ -193,6 +208,7 @@ const ContactPage = () => {
                   onChange={handleChange}
                   required
                 />
+                {/* Contact Number */}
                 <TextField
                   label="Contact Number"
                   variant="outlined"
@@ -203,6 +219,7 @@ const ContactPage = () => {
                   onChange={handleChange}
                   required
                 />
+                {/* Message */}
                 <TextField
                   label="Message"
                   variant="outlined"
@@ -214,6 +231,7 @@ const ContactPage = () => {
                   onChange={handleChange}
                   required
                 />
+                {/* Submit Button */}
                 <Button
                   type="submit"
                   variant="contained"

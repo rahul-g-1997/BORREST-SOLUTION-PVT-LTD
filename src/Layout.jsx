@@ -7,16 +7,24 @@ import { useSelector } from "react-redux";
 import avatar from "./assets/images/WhatsApplogo.jpeg";
 
 const Layout = () => {
-  const isLogin = useSelector((state) => state.login.isLogin);
+  const isLogin = useSelector((state) => state.login.isLogin); // Get login state from Redux store
 
   return (
     <div>
+      {/* Main container */}
       <Container style={{ margin: 0, padding: 0 }}>
         <Box style={{ width: "100vw" }}>
+          {/* Render DrawerAppBar component if not logged in */}
           {!isLogin && <DrawerAppBar />}
+
+          {/* Render nested routes */}
           <Outlet />
+
+          {/* Render Footer component */}
           <Footer />
         </Box>
+
+        {/* Floating WhatsApp button */}
         <FloatingWhatsApp
           phoneNumber="+919896810237"
           accountName="Mr. Vinod Bhatia, IFS"
